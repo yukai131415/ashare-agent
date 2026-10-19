@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-10-19T20:35:44+08:00",
+  "ok": true,
+  "checks": [
+    "actual Milvus upsert/search",
+    "stock filter",
+    "future disclosure filter"
+  ],
+  "collection": "astock_smoke_19d091bc2d_8f01194e95",
+  "chunks": 3
+}

@@ -1,0 +1,86 @@
+{
+  "verified_at": "2026-10-19T20:57:09+08:00",
+  "protocol": "MCP stdio",
+  "ok": true,
+  "checks": [
+    {
+      "check": "stdio_initialize_and_discover",
+      "ok": true,
+      "tools": [
+        "get_quotes",
+        "get_financials",
+        "search_research",
+        "sync_research"
+      ]
+    },
+    {
+      "check": "research_tool_dispatch",
+      "ok": true,
+      "note": "Dispatched against the configured real Milvus service"
+    },
+    {
+      "check": "get_quotes",
+      "ok": true,
+      "response_summary": {
+        "provider": "tencent",
+        "fetched_at": "2026-10-19T20:57:03+08:00",
+        "row": {
+          "code": "000823",
+          "name": "超声电子",
+          "price": 24.71,
+          "change_pct": -2.18,
+          "change": -0.55,
+          "change_speed_pct": null,
+          "turnover_pct": 24.22,
+          "volume_ratio": null,
+          "amplitude_pct": 9.94,
+          "amount": 3538660000.0,
+          "circulating_shares": 594941319.3039255,
+          "circulating_market_cap": 14701000000.0,
+          "pe_ratio": 66.49,
+          "previous_close": 25.26,
+          "high_price": 25.87,
+          "quote_time": "20261019161454"
+        }
+      }
+    },
+    {
+      "check": "get_financials",
+      "ok": true,
+      "response_summary": {
+        "source": "https://datacenter-web.eastmoney.com/api/data/v1/get",
+        "as_of": "2026-10-19",
+        "report": {
+          "SECURITY_CODE": "000823",
+          "SECURITY_NAME_ABBR": "超声电子",
+          "REPORTDATE": "2026-06-30 00:00:00",
+          "NOTICE_DATE": "2026-08-22 00:00:00",
+          "EITIME": "2026-08-21 16:12:44",
+          "BASIC_EPS": 0.2093,
+          "WEIGHTAVG_ROE": 2.28,
+          "TOTAL_OPERATE_INCOME": 3351327623.01,
+          "PARENT_NETPROFIT": 113477425.38,
+          "SJLTZ": -1.17,
+          "YSTZ": 10.0447920812
+        }
+      }
+    },
+    {
+      "check": "real_research_sync",
+      "ok": true,
+      "sources": [
+        {
+          "title": "2026年中报点评：净息差企稳，资产质量仍有压力",
+          "source": "https://data.eastmoney.com/report/zw_stock.jshtml?infocode=AP202608281828618943",
+          "published_at": "2026-08-28T23:59:59+08:00"
+        }
+      ]
+    },
+    {
+      "check": "real_research_search",
+      "ok": true,
+      "source": "https://data.eastmoney.com/report/zw_stock.jshtml?infocode=AP202608281828618943",
+      "title": "2026年中报点评：净息差企稳，资产质量仍有压力"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "research": {
+    "enabled": true,
+    "uri": "http://127.0.0.1:19530",
+    "collection": "a_stock_research",
+    "dimension": 384,
+    "embedding_model": "zh-char-bigram-v1"
+  }
+}

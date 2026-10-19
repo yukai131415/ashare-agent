@@ -1,0 +1,110 @@
+{
+  "http": {
+    "timeout_seconds": 20,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
+    "request_interval_seconds": 0.35
+  },
+  "market": {
+    "provider": "tencent",
+    "symbol_list_url": "https://assets.linkdiary.cn/shares/zh_a_list.json",
+    "quote_base_url": "https://qt.gtimg.cn/",
+    "batch_size": 180,
+    "min_quote_coverage": 0.95,
+    "base_urls": [
+      "https://push2.eastmoney.com/api/qt/clist/get",
+      "https://79.push2.eastmoney.com/api/qt/clist/get",
+      "https://17.push2.eastmoney.com/api/qt/clist/get",
+      "https://29.push2.eastmoney.com/api/qt/clist/get",
+      "https://82.push2.eastmoney.com/api/qt/clist/get"
+    ],
+    "market_filter": "m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23",
+    "fields": "f1,f2,f3,f4,f6,f7,f8,f9,f10,f12,f14,f20,f21,f22",
+    "sort_field": "f3",
+    "page_size": 5000,
+    "max_pages": 100,
+    "stop_after_empty_pages": 1,
+    "timeout_seconds": 15,
+    "request_interval_seconds": 1.5,
+    "page_retries": 3,
+    "page_retry_backoff_seconds": 2.0,
+    "public_token": "bd1d9ddb04089700cf9c27f6f7426281",
+    "exclude_st": true,
+    "exclude_gem": true,
+    "exclude_bse": true,
+    "exclude_star": true
+  },
+  "news": {
+    "provider": "eastmoney",
+    "base_url": "https://np-weblist.eastmoney.com/comm/web/getFastNewsList",
+    "page_size": 50,
+    "max_pages": 8,
+    "request_interval_seconds": 0.8,
+    "lookback_hours": 24,
+    "min_relevance_score": 0.55,
+    "sources": [
+      {
+        "name": "eastmoney_a_share",
+        "fast_column": "103,104",
+        "channel": "上市公司 / 中国股市",
+        "region": "domestic",
+        "max_pages": 8
+      },
+      {
+        "name": "eastmoney_724",
+        "fast_column": "102",
+        "channel": "7×24快讯",
+        "region": "mixed",
+        "max_pages": 4
+      }
+    ]
+  },
+  "supervisor": {
+    "max_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "allow_cached_data": false,
+    "min_market_rows": 2500
+  },
+  "recommendation": {
+    "models": ["balanced", "momentum", "value_reversal"],
+    "min_turnover_amount": 100000000,
+    "max_daily_change_pct": 9.8
+  },
+  "backtest": {
+    "holding_trading_days": 1,
+    "switch_model_on_negative": true,
+    "negative_streak_to_switch": 5,
+    "close_time": "15:00"
+  },
+  "scheduler": {
+    "enabled": true,
+    "daily_run_time": "14:30",
+    "dashboard_refresh_seconds": 60
+  },
+  "workflow": {
+    "financials_enabled": true,
+    "llm_enabled": false,
+    "tool_timeout_seconds": 8
+  },
+  "research": {
+    "enabled": true,
+    "auto_start": true,
+    "auto_collect": true,
+    "max_reports_per_stock": 3,
+    "lookback_days": 730,
+    "uri": "http://127.0.0.1:19530",
+    "collection": "a_stock_research",
+    "dimension": 384,
+    "embedding_model": "zh-char-bigram-v1",
+    "embedding_base_url": "",
+    "embedding_key_env": "ASTOCK_EMBEDDING_API_KEY",
+    "timeout_seconds": 5
+  },
+  "llm": {
+    "enabled": false,
+    "base_url": "https://api.openai.com/v1",
+    "model": "gpt-4o-mini",
+    "api_key_env": "ASTOCK_LLM_API_KEY",
+    "timeout_seconds": 30,
+    "max_tokens": 700
+  }
+}

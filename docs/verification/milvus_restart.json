@@ -1,0 +1,9 @@
+{
+  "verified_at": "2026-10-19T21:02:38+08:00",
+  "ok": true,
+  "before_chunks": 10,
+  "after_chunks": 10,
+  "auto_start_recovered": true,
+  "source": "https://data.eastmoney.com/report/zw_stock.jshtml?infocode=AP202608281828618943",
+  "windows_unicode_path_compatible": true
+}

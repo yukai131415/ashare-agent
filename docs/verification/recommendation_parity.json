@@ -1,0 +1,4140 @@
+{
+  "verified_at": "2026-10-19T21:12:42+08:00",
+  "engine": "compiled_langgraph",
+  "baseline_captured_at": "2026-10-19T19:56:36+08:00",
+  "cases": 258,
+  "ranked_rows": 395079,
+  "passed": 258,
+  "model_and_feature_files_unchanged": true,
+  "ok": true,
+  "comparisons": [
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_134443.csv",
+      "model": "balanced",
+      "candidate_count": 95,
+      "equal": true,
+      "before_top1": {
+        "code": "600613",
+        "score": 0.63767906,
+        "price": 7.93
+      },
+      "after_top1": {
+        "code": "600613",
+        "score": 0.63767906,
+        "price": 7.93
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_134443.csv",
+      "model": "momentum",
+      "candidate_count": 95,
+      "equal": true,
+      "before_top1": {
+        "code": "000523",
+        "score": 0.5354353199999999,
+        "price": 3.24
+      },
+      "after_top1": {
+        "code": "000523",
+        "score": 0.5354353199999999,
+        "price": 3.24
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_134443.csv",
+      "model": "value_reversal",
+      "candidate_count": 95,
+      "equal": true,
+      "before_top1": {
+        "code": "600919",
+        "score": 0.9327565400000001,
+        "price": 11.88
+      },
+      "after_top1": {
+        "code": "600919",
+        "score": 0.9327565400000001,
+        "price": 11.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_163531.csv",
+      "model": "balanced",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "600367",
+        "score": 1.2619004,
+        "price": 39.88
+      },
+      "after_top1": {
+        "code": "600367",
+        "score": 1.2619004,
+        "price": 39.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_163531.csv",
+      "model": "momentum",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "000703",
+        "score": 0.90995812,
+        "price": 19.08
+      },
+      "after_top1": {
+        "code": "000703",
+        "score": 0.90995812,
+        "price": 19.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_163531.csv",
+      "model": "value_reversal",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "002611",
+        "score": 1.12743752,
+        "price": 14.95
+      },
+      "after_top1": {
+        "code": "002611",
+        "score": 1.12743752,
+        "price": 14.95
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_163921.csv",
+      "model": "balanced",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "600367",
+        "score": 1.2619004,
+        "price": 39.88
+      },
+      "after_top1": {
+        "code": "600367",
+        "score": 1.2619004,
+        "price": 39.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_163921.csv",
+      "model": "momentum",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "000703",
+        "score": 0.90995812,
+        "price": 19.08
+      },
+      "after_top1": {
+        "code": "000703",
+        "score": 0.90995812,
+        "price": 19.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_163921.csv",
+      "model": "value_reversal",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "002611",
+        "score": 1.12743752,
+        "price": 14.95
+      },
+      "after_top1": {
+        "code": "002611",
+        "score": 1.12743752,
+        "price": 14.95
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_164321.csv",
+      "model": "balanced",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "600367",
+        "score": 1.2618977500000002,
+        "price": 39.88
+      },
+      "after_top1": {
+        "code": "600367",
+        "score": 1.2618977500000002,
+        "price": 39.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_164321.csv",
+      "model": "momentum",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "000703",
+        "score": 0.90995812,
+        "price": 19.08
+      },
+      "after_top1": {
+        "code": "000703",
+        "score": 0.90995812,
+        "price": 19.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_164321.csv",
+      "model": "value_reversal",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "002611",
+        "score": 1.12743752,
+        "price": 14.95
+      },
+      "after_top1": {
+        "code": "002611",
+        "score": 1.12743752,
+        "price": 14.95
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_165529.csv",
+      "model": "balanced",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "600367",
+        "score": 1.2618977500000002,
+        "price": 39.88
+      },
+      "after_top1": {
+        "code": "600367",
+        "score": 1.2618977500000002,
+        "price": 39.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_165529.csv",
+      "model": "momentum",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "000703",
+        "score": 0.90995812,
+        "price": 19.08
+      },
+      "after_top1": {
+        "code": "000703",
+        "score": 0.90995812,
+        "price": 19.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260819_165529.csv",
+      "model": "value_reversal",
+      "candidate_count": 1663,
+      "equal": true,
+      "before_top1": {
+        "code": "002611",
+        "score": 1.12743752,
+        "price": 14.95
+      },
+      "after_top1": {
+        "code": "002611",
+        "score": 1.12743752,
+        "price": 14.95
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260820_150000.csv",
+      "model": "balanced",
+      "candidate_count": 1,
+      "equal": true,
+      "before_top1": {
+        "code": "000656",
+        "score": 0.0,
+        "price": 1.26
+      },
+      "after_top1": {
+        "code": "000656",
+        "score": 0.0,
+        "price": 1.26
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260820_150000.csv",
+      "model": "momentum",
+      "candidate_count": 1,
+      "equal": true,
+      "before_top1": {
+        "code": "000656",
+        "score": 0.0,
+        "price": 1.26
+      },
+      "after_top1": {
+        "code": "000656",
+        "score": 0.0,
+        "price": 1.26
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260820_150000.csv",
+      "model": "value_reversal",
+      "candidate_count": 1,
+      "equal": true,
+      "before_top1": {
+        "code": "000656",
+        "score": 0.0,
+        "price": 1.26
+      },
+      "after_top1": {
+        "code": "000656",
+        "score": 0.0,
+        "price": 1.26
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_112220.csv",
+      "model": "balanced",
+      "candidate_count": 1120,
+      "equal": true,
+      "before_top1": {
+        "code": "002491",
+        "score": 2.24548197,
+        "price": 20.68
+      },
+      "after_top1": {
+        "code": "002491",
+        "score": 2.24548197,
+        "price": 20.68
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_112220.csv",
+      "model": "momentum",
+      "candidate_count": 1120,
+      "equal": true,
+      "before_top1": {
+        "code": "600500",
+        "score": 1.8356935200000002,
+        "price": 5.54
+      },
+      "after_top1": {
+        "code": "600500",
+        "score": 1.8356935200000002,
+        "price": 5.54
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_112220.csv",
+      "model": "value_reversal",
+      "candidate_count": 1120,
+      "equal": true,
+      "before_top1": {
+        "code": "001286",
+        "score": 1.5680189,
+        "price": 9.57
+      },
+      "after_top1": {
+        "code": "001286",
+        "score": 1.5680189,
+        "price": 9.57
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_131023.csv",
+      "model": "balanced",
+      "candidate_count": 1176,
+      "equal": true,
+      "before_top1": {
+        "code": "002491",
+        "score": 2.4489368099999997,
+        "price": 21.02
+      },
+      "after_top1": {
+        "code": "002491",
+        "score": 2.4489368099999997,
+        "price": 21.02
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_131023.csv",
+      "model": "momentum",
+      "candidate_count": 1176,
+      "equal": true,
+      "before_top1": {
+        "code": "002491",
+        "score": 2.01183436,
+        "price": 21.02
+      },
+      "after_top1": {
+        "code": "002491",
+        "score": 2.01183436,
+        "price": 21.02
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_131023.csv",
+      "model": "value_reversal",
+      "candidate_count": 1176,
+      "equal": true,
+      "before_top1": {
+        "code": "000885",
+        "score": 1.4856833400000002,
+        "price": 12.2
+      },
+      "after_top1": {
+        "code": "000885",
+        "score": 1.4856833400000002,
+        "price": 12.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_131753.csv",
+      "model": "balanced",
+      "candidate_count": 1197,
+      "equal": true,
+      "before_top1": {
+        "code": "002491",
+        "score": 2.34301255,
+        "price": 20.88
+      },
+      "after_top1": {
+        "code": "002491",
+        "score": 2.34301255,
+        "price": 20.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_131753.csv",
+      "model": "momentum",
+      "candidate_count": 1197,
+      "equal": true,
+      "before_top1": {
+        "code": "002192",
+        "score": 1.8904343600000002,
+        "price": 72.0
+      },
+      "after_top1": {
+        "code": "002192",
+        "score": 1.8904343600000002,
+        "price": 72.0
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_131753.csv",
+      "model": "value_reversal",
+      "candidate_count": 1197,
+      "equal": true,
+      "before_top1": {
+        "code": "000885",
+        "score": 1.48265316,
+        "price": 12.2
+      },
+      "after_top1": {
+        "code": "000885",
+        "score": 1.48265316,
+        "price": 12.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_132617.csv",
+      "model": "balanced",
+      "candidate_count": 1213,
+      "equal": true,
+      "before_top1": {
+        "code": "002491",
+        "score": 2.31384815,
+        "price": 20.88
+      },
+      "after_top1": {
+        "code": "002491",
+        "score": 2.31384815,
+        "price": 20.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_132617.csv",
+      "model": "momentum",
+      "candidate_count": 1213,
+      "equal": true,
+      "before_top1": {
+        "code": "600110",
+        "score": 1.8389854,
+        "price": 10.66
+      },
+      "after_top1": {
+        "code": "600110",
+        "score": 1.8389854,
+        "price": 10.66
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260821_132617.csv",
+      "model": "value_reversal",
+      "candidate_count": 1213,
+      "equal": true,
+      "before_top1": {
+        "code": "000885",
+        "score": 1.4845891200000003,
+        "price": 12.2
+      },
+      "after_top1": {
+        "code": "000885",
+        "score": 1.4845891200000003,
+        "price": 12.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_145614.csv",
+      "model": "balanced",
+      "candidate_count": 1586,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.9553568799999999,
+        "price": 8.52
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.9553568799999999,
+        "price": 8.52
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_145614.csv",
+      "model": "momentum",
+      "candidate_count": 1586,
+      "equal": true,
+      "before_top1": {
+        "code": "000603",
+        "score": 1.8685167599999999,
+        "price": 39.85
+      },
+      "after_top1": {
+        "code": "000603",
+        "score": 1.8685167599999999,
+        "price": 39.85
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_145614.csv",
+      "model": "value_reversal",
+      "candidate_count": 1586,
+      "equal": true,
+      "before_top1": {
+        "code": "000703",
+        "score": 1.3384933,
+        "price": 18.98
+      },
+      "after_top1": {
+        "code": "000703",
+        "score": 1.3384933,
+        "price": 18.98
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_193310.csv",
+      "model": "balanced",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 2.0067218999999996,
+        "price": 14.19
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 2.0067218999999996,
+        "price": 14.19
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_193310.csv",
+      "model": "momentum",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      },
+      "after_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_193310.csv",
+      "model": "value_reversal",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_194355.csv",
+      "model": "balanced",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 2.0076240400000005,
+        "price": 14.19
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 2.0076240400000005,
+        "price": 14.19
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_194355.csv",
+      "model": "momentum",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      },
+      "after_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_194355.csv",
+      "model": "value_reversal",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_195738.csv",
+      "model": "balanced",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 2.0076080700000003,
+        "price": 14.19
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 2.0076080700000003,
+        "price": 14.19
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_195738.csv",
+      "model": "momentum",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      },
+      "after_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_195738.csv",
+      "model": "value_reversal",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_200013.csv",
+      "model": "balanced",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 2.0076080700000003,
+        "price": 14.19
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 2.0076080700000003,
+        "price": 14.19
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_200013.csv",
+      "model": "momentum",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      },
+      "after_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_200013.csv",
+      "model": "value_reversal",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_212012.csv",
+      "model": "balanced",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 2.0061556800000004,
+        "price": 14.19
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 2.0061556800000004,
+        "price": 14.19
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_212012.csv",
+      "model": "momentum",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      },
+      "after_top1": {
+        "code": "000603",
+        "score": 1.86902904,
+        "price": 39.86
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260824_212012.csv",
+      "model": "value_reversal",
+      "candidate_count": 1594,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.4332174600000003,
+        "price": 67.27
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260825_143559.csv",
+      "model": "balanced",
+      "candidate_count": 1531,
+      "equal": true,
+      "before_top1": {
+        "code": "002437",
+        "score": 1.8704228500000002,
+        "price": 4.31
+      },
+      "after_top1": {
+        "code": "002437",
+        "score": 1.8704228500000002,
+        "price": 4.31
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260825_143559.csv",
+      "model": "momentum",
+      "candidate_count": 1531,
+      "equal": true,
+      "before_top1": {
+        "code": "002437",
+        "score": 0.9351303200000001,
+        "price": 4.31
+      },
+      "after_top1": {
+        "code": "002437",
+        "score": 0.9351303200000001,
+        "price": 4.31
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260825_143559.csv",
+      "model": "value_reversal",
+      "candidate_count": 1531,
+      "equal": true,
+      "before_top1": {
+        "code": "601997",
+        "score": 1.46368912,
+        "price": 5.46
+      },
+      "after_top1": {
+        "code": "601997",
+        "score": 1.46368912,
+        "price": 5.46
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260825_151750.csv",
+      "model": "balanced",
+      "candidate_count": 1664,
+      "equal": true,
+      "before_top1": {
+        "code": "002437",
+        "score": 1.8239471499999997,
+        "price": 4.3
+      },
+      "after_top1": {
+        "code": "002437",
+        "score": 1.8239471499999997,
+        "price": 4.3
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260825_151750.csv",
+      "model": "momentum",
+      "candidate_count": 1664,
+      "equal": true,
+      "before_top1": {
+        "code": "002437",
+        "score": 0.92961548,
+        "price": 4.3
+      },
+      "after_top1": {
+        "code": "002437",
+        "score": 0.92961548,
+        "price": 4.3
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260825_151750.csv",
+      "model": "value_reversal",
+      "candidate_count": 1664,
+      "equal": true,
+      "before_top1": {
+        "code": "601997",
+        "score": 1.4527813600000004,
+        "price": 5.47
+      },
+      "after_top1": {
+        "code": "601997",
+        "score": 1.4527813600000004,
+        "price": 5.47
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260826_142901.csv",
+      "model": "balanced",
+      "candidate_count": 1520,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 2.41792534,
+        "price": 9.85
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 2.41792534,
+        "price": 9.85
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260826_142901.csv",
+      "model": "momentum",
+      "candidate_count": 1520,
+      "equal": true,
+      "before_top1": {
+        "code": "601118",
+        "score": 1.85550732,
+        "price": 6.65
+      },
+      "after_top1": {
+        "code": "601118",
+        "score": 1.85550732,
+        "price": 6.65
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260826_142901.csv",
+      "model": "value_reversal",
+      "candidate_count": 1520,
+      "equal": true,
+      "before_top1": {
+        "code": "002867",
+        "score": 1.7681198000000002,
+        "price": 11.2
+      },
+      "after_top1": {
+        "code": "002867",
+        "score": 1.7681198000000002,
+        "price": 11.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_143015.csv",
+      "model": "balanced",
+      "candidate_count": 1519,
+      "equal": true,
+      "before_top1": {
+        "code": "600272",
+        "score": 1.9435771099999997,
+        "price": 22.53
+      },
+      "after_top1": {
+        "code": "600272",
+        "score": 1.9435771099999997,
+        "price": 22.53
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_143015.csv",
+      "model": "momentum",
+      "candidate_count": 1519,
+      "equal": true,
+      "before_top1": {
+        "code": "600487",
+        "score": 1.8444673200000001,
+        "price": 71.12
+      },
+      "after_top1": {
+        "code": "600487",
+        "score": 1.8444673200000001,
+        "price": 71.12
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_143015.csv",
+      "model": "value_reversal",
+      "candidate_count": 1519,
+      "equal": true,
+      "before_top1": {
+        "code": "601916",
+        "score": 1.4629195200000003,
+        "price": 2.88
+      },
+      "after_top1": {
+        "code": "601916",
+        "score": 1.4629195200000003,
+        "price": 2.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_154131.csv",
+      "model": "balanced",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "002412",
+        "score": 1.95269905,
+        "price": 14.02
+      },
+      "after_top1": {
+        "code": "002412",
+        "score": 1.95269905,
+        "price": 14.02
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_154131.csv",
+      "model": "momentum",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "000506",
+        "score": 1.59120592,
+        "price": 22.08
+      },
+      "after_top1": {
+        "code": "000506",
+        "score": 1.59120592,
+        "price": 22.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_154131.csv",
+      "model": "value_reversal",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "601916",
+        "score": 1.4416561200000002,
+        "price": 2.89
+      },
+      "after_top1": {
+        "code": "601916",
+        "score": 1.4416561200000002,
+        "price": 2.89
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_155151.csv",
+      "model": "balanced",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "002412",
+        "score": 1.95269905,
+        "price": 14.02
+      },
+      "after_top1": {
+        "code": "002412",
+        "score": 1.95269905,
+        "price": 14.02
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_155151.csv",
+      "model": "momentum",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "000506",
+        "score": 1.59120592,
+        "price": 22.08
+      },
+      "after_top1": {
+        "code": "000506",
+        "score": 1.59120592,
+        "price": 22.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_155151.csv",
+      "model": "value_reversal",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "601916",
+        "score": 1.4416561200000002,
+        "price": 2.89
+      },
+      "after_top1": {
+        "code": "601916",
+        "score": 1.4416561200000002,
+        "price": 2.89
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_160407.csv",
+      "model": "balanced",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "002412",
+        "score": 1.95269905,
+        "price": 14.02
+      },
+      "after_top1": {
+        "code": "002412",
+        "score": 1.95269905,
+        "price": 14.02
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_160407.csv",
+      "model": "momentum",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "000506",
+        "score": 1.59120592,
+        "price": 22.08
+      },
+      "after_top1": {
+        "code": "000506",
+        "score": 1.59120592,
+        "price": 22.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_160407.csv",
+      "model": "value_reversal",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "601916",
+        "score": 1.4416561200000002,
+        "price": 2.89
+      },
+      "after_top1": {
+        "code": "601916",
+        "score": 1.4416561200000002,
+        "price": 2.89
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_161024.csv",
+      "model": "balanced",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "002412",
+        "score": 1.95271235,
+        "price": 14.02
+      },
+      "after_top1": {
+        "code": "002412",
+        "score": 1.95271235,
+        "price": 14.02
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_161024.csv",
+      "model": "momentum",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "000506",
+        "score": 1.59120592,
+        "price": 22.08
+      },
+      "after_top1": {
+        "code": "000506",
+        "score": 1.59120592,
+        "price": 22.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260827_161024.csv",
+      "model": "value_reversal",
+      "candidate_count": 1653,
+      "equal": true,
+      "before_top1": {
+        "code": "601916",
+        "score": 1.4416561200000002,
+        "price": 2.89
+      },
+      "after_top1": {
+        "code": "601916",
+        "score": 1.4416561200000002,
+        "price": 2.89
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260828_150000.csv",
+      "model": "balanced",
+      "candidate_count": 1,
+      "equal": true,
+      "before_top1": {
+        "code": "600272",
+        "score": 0.0,
+        "price": 20.29
+      },
+      "after_top1": {
+        "code": "600272",
+        "score": 0.0,
+        "price": 20.29
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260828_150000.csv",
+      "model": "momentum",
+      "candidate_count": 1,
+      "equal": true,
+      "before_top1": {
+        "code": "600272",
+        "score": 0.0,
+        "price": 20.29
+      },
+      "after_top1": {
+        "code": "600272",
+        "score": 0.0,
+        "price": 20.29
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260828_150000.csv",
+      "model": "value_reversal",
+      "candidate_count": 1,
+      "equal": true,
+      "before_top1": {
+        "code": "600272",
+        "score": 0.0,
+        "price": 20.29
+      },
+      "after_top1": {
+        "code": "600272",
+        "score": 0.0,
+        "price": 20.29
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260830_170221.csv",
+      "model": "balanced",
+      "candidate_count": 1695,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 2.4233000799999997,
+        "price": 11.77
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 2.4233000799999997,
+        "price": 11.77
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260830_170221.csv",
+      "model": "momentum",
+      "candidate_count": 1695,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.7489525999999997,
+        "price": 11.77
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.7489525999999997,
+        "price": 11.77
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260830_170221.csv",
+      "model": "value_reversal",
+      "candidate_count": 1695,
+      "equal": true,
+      "before_top1": {
+        "code": "601166",
+        "score": 1.66301136,
+        "price": 17.43
+      },
+      "after_top1": {
+        "code": "601166",
+        "score": 1.66301136,
+        "price": 17.43
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_145512.csv",
+      "model": "balanced",
+      "candidate_count": 1771,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.79537142,
+        "price": 12.01
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.79537142,
+        "price": 12.01
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_145512.csv",
+      "model": "momentum",
+      "candidate_count": 1771,
+      "equal": true,
+      "before_top1": {
+        "code": "000938",
+        "score": 1.51331152,
+        "price": 38.88
+      },
+      "after_top1": {
+        "code": "000938",
+        "score": 1.51331152,
+        "price": 38.88
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_145512.csv",
+      "model": "value_reversal",
+      "candidate_count": 1771,
+      "equal": true,
+      "before_top1": {
+        "code": "600015",
+        "score": 1.6548798200000001,
+        "price": 6.23
+      },
+      "after_top1": {
+        "code": "600015",
+        "score": 1.6548798200000001,
+        "price": 6.23
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_150401.csv",
+      "model": "balanced",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.8585422,
+        "price": 12.04
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.8585422,
+        "price": 12.04
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_150401.csv",
+      "model": "momentum",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "000938",
+        "score": 1.5341456400000002,
+        "price": 38.95
+      },
+      "after_top1": {
+        "code": "000938",
+        "score": 1.5341456400000002,
+        "price": 38.95
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_150401.csv",
+      "model": "value_reversal",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "600015",
+        "score": 1.66025358,
+        "price": 6.23
+      },
+      "after_top1": {
+        "code": "600015",
+        "score": 1.66025358,
+        "price": 6.23
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_160324.csv",
+      "model": "balanced",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.8585422,
+        "price": 12.04
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.8585422,
+        "price": 12.04
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_160324.csv",
+      "model": "momentum",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "000938",
+        "score": 1.5341456400000002,
+        "price": 38.95
+      },
+      "after_top1": {
+        "code": "000938",
+        "score": 1.5341456400000002,
+        "price": 38.95
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_160324.csv",
+      "model": "value_reversal",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "600015",
+        "score": 1.66025358,
+        "price": 6.23
+      },
+      "after_top1": {
+        "code": "600015",
+        "score": 1.66025358,
+        "price": 6.23
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_172611.csv",
+      "model": "balanced",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.8585422,
+        "price": 12.04
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.8585422,
+        "price": 12.04
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_172611.csv",
+      "model": "momentum",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "000938",
+        "score": 1.5341456400000002,
+        "price": 38.95
+      },
+      "after_top1": {
+        "code": "000938",
+        "score": 1.5341456400000002,
+        "price": 38.95
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260831_172611.csv",
+      "model": "value_reversal",
+      "candidate_count": 1796,
+      "equal": true,
+      "before_top1": {
+        "code": "600015",
+        "score": 1.66025358,
+        "price": 6.23
+      },
+      "after_top1": {
+        "code": "600015",
+        "score": 1.66025358,
+        "price": 6.23
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_143056.csv",
+      "model": "balanced",
+      "candidate_count": 1737,
+      "equal": true,
+      "before_top1": {
+        "code": "002418",
+        "score": 1.46717526,
+        "price": 5.58
+      },
+      "after_top1": {
+        "code": "002418",
+        "score": 1.46717526,
+        "price": 5.58
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_143056.csv",
+      "model": "momentum",
+      "candidate_count": 1737,
+      "equal": true,
+      "before_top1": {
+        "code": "002131",
+        "score": 0.78599972,
+        "price": 5.06
+      },
+      "after_top1": {
+        "code": "002131",
+        "score": 0.78599972,
+        "price": 5.06
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_143056.csv",
+      "model": "value_reversal",
+      "candidate_count": 1737,
+      "equal": true,
+      "before_top1": {
+        "code": "600036",
+        "score": 1.20025544,
+        "price": 40.85
+      },
+      "after_top1": {
+        "code": "600036",
+        "score": 1.20025544,
+        "price": 40.85
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_143835.csv",
+      "model": "balanced",
+      "candidate_count": 1767,
+      "equal": true,
+      "before_top1": {
+        "code": "002418",
+        "score": 1.51299135,
+        "price": 5.63
+      },
+      "after_top1": {
+        "code": "002418",
+        "score": 1.51299135,
+        "price": 5.63
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_143835.csv",
+      "model": "momentum",
+      "candidate_count": 1767,
+      "equal": true,
+      "before_top1": {
+        "code": "600722",
+        "score": 0.9697019600000001,
+        "price": 18.35
+      },
+      "after_top1": {
+        "code": "600722",
+        "score": 0.9697019600000001,
+        "price": 18.35
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_143835.csv",
+      "model": "value_reversal",
+      "candidate_count": 1767,
+      "equal": true,
+      "before_top1": {
+        "code": "600036",
+        "score": 1.20581872,
+        "price": 40.79
+      },
+      "after_top1": {
+        "code": "600036",
+        "score": 1.20581872,
+        "price": 40.79
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_164658.csv",
+      "model": "balanced",
+      "candidate_count": 1866,
+      "equal": true,
+      "before_top1": {
+        "code": "002418",
+        "score": 1.5274428,
+        "price": 5.68
+      },
+      "after_top1": {
+        "code": "002418",
+        "score": 1.5274428,
+        "price": 5.68
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_164658.csv",
+      "model": "momentum",
+      "candidate_count": 1866,
+      "equal": true,
+      "before_top1": {
+        "code": "002131",
+        "score": 0.84524968,
+        "price": 5.1
+      },
+      "after_top1": {
+        "code": "002131",
+        "score": 0.84524968,
+        "price": 5.1
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260901_164658.csv",
+      "model": "value_reversal",
+      "candidate_count": 1866,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.2050728,
+        "price": 57.23
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.2050728,
+        "price": 57.23
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_120135.csv",
+      "model": "balanced",
+      "candidate_count": 1321,
+      "equal": true,
+      "before_top1": {
+        "code": "600540",
+        "score": 2.2004295000000003,
+        "price": 6.5
+      },
+      "after_top1": {
+        "code": "600540",
+        "score": 2.2004295000000003,
+        "price": 6.5
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_120135.csv",
+      "model": "momentum",
+      "candidate_count": 1321,
+      "equal": true,
+      "before_top1": {
+        "code": "603685",
+        "score": 1.89108316,
+        "price": 28.31
+      },
+      "after_top1": {
+        "code": "603685",
+        "score": 1.89108316,
+        "price": 28.31
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_120135.csv",
+      "model": "value_reversal",
+      "candidate_count": 1321,
+      "equal": true,
+      "before_top1": {
+        "code": "002772",
+        "score": 1.3155385200000003,
+        "price": 11.27
+      },
+      "after_top1": {
+        "code": "002772",
+        "score": 1.3155385200000003,
+        "price": 11.27
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_143045.csv",
+      "model": "balanced",
+      "candidate_count": 1603,
+      "equal": true,
+      "before_top1": {
+        "code": "003040",
+        "score": 2.0289706800000005,
+        "price": 21.09
+      },
+      "after_top1": {
+        "code": "003040",
+        "score": 2.0289706800000005,
+        "price": 21.09
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_143045.csv",
+      "model": "momentum",
+      "candidate_count": 1603,
+      "equal": true,
+      "before_top1": {
+        "code": "003040",
+        "score": 1.8598518800000001,
+        "price": 21.09
+      },
+      "after_top1": {
+        "code": "003040",
+        "score": 1.8598518800000001,
+        "price": 21.09
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_143045.csv",
+      "model": "value_reversal",
+      "candidate_count": 1603,
+      "equal": true,
+      "before_top1": {
+        "code": "002772",
+        "score": 1.3147079000000004,
+        "price": 11.26
+      },
+      "after_top1": {
+        "code": "002772",
+        "score": 1.3147079000000004,
+        "price": 11.26
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_215922.csv",
+      "model": "balanced",
+      "candidate_count": 1748,
+      "equal": true,
+      "before_top1": {
+        "code": "003040",
+        "score": 2.03183696,
+        "price": 21.12
+      },
+      "after_top1": {
+        "code": "003040",
+        "score": 2.03183696,
+        "price": 21.12
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_215922.csv",
+      "model": "momentum",
+      "candidate_count": 1748,
+      "equal": true,
+      "before_top1": {
+        "code": "603221",
+        "score": 2.01897892,
+        "price": 33.37
+      },
+      "after_top1": {
+        "code": "603221",
+        "score": 2.01897892,
+        "price": 33.37
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260902_215922.csv",
+      "model": "value_reversal",
+      "candidate_count": 1748,
+      "equal": true,
+      "before_top1": {
+        "code": "002772",
+        "score": 1.3079973200000001,
+        "price": 11.24
+      },
+      "after_top1": {
+        "code": "002772",
+        "score": 1.3079973200000001,
+        "price": 11.24
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260903_143112.csv",
+      "model": "balanced",
+      "candidate_count": 1537,
+      "equal": true,
+      "before_top1": {
+        "code": "600172",
+        "score": 2.19880596,
+        "price": 16.1
+      },
+      "after_top1": {
+        "code": "600172",
+        "score": 2.19880596,
+        "price": 16.1
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260903_143112.csv",
+      "model": "momentum",
+      "candidate_count": 1537,
+      "equal": true,
+      "before_top1": {
+        "code": "600172",
+        "score": 2.02972952,
+        "price": 16.1
+      },
+      "after_top1": {
+        "code": "600172",
+        "score": 2.02972952,
+        "price": 16.1
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260903_143112.csv",
+      "model": "value_reversal",
+      "candidate_count": 1537,
+      "equal": true,
+      "before_top1": {
+        "code": "601658",
+        "score": 1.38577544,
+        "price": 5.45
+      },
+      "after_top1": {
+        "code": "601658",
+        "score": 1.38577544,
+        "price": 5.45
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260903_162600.csv",
+      "model": "balanced",
+      "candidate_count": 1647,
+      "equal": true,
+      "before_top1": {
+        "code": "600172",
+        "score": 2.06254546,
+        "price": 15.92
+      },
+      "after_top1": {
+        "code": "600172",
+        "score": 2.06254546,
+        "price": 15.92
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260903_162600.csv",
+      "model": "momentum",
+      "candidate_count": 1647,
+      "equal": true,
+      "before_top1": {
+        "code": "002536",
+        "score": 1.9347082,
+        "price": 63.03
+      },
+      "after_top1": {
+        "code": "002536",
+        "score": 1.9347082,
+        "price": 63.03
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260903_162600.csv",
+      "model": "value_reversal",
+      "candidate_count": 1647,
+      "equal": true,
+      "before_top1": {
+        "code": "601288",
+        "score": 1.3491252000000002,
+        "price": 6.89
+      },
+      "after_top1": {
+        "code": "601288",
+        "score": 1.3491252000000002,
+        "price": 6.89
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_144918.csv",
+      "model": "balanced",
+      "candidate_count": 1752,
+      "equal": true,
+      "before_top1": {
+        "code": "002354",
+        "score": 2.2302307199999998,
+        "price": 8.41
+      },
+      "after_top1": {
+        "code": "002354",
+        "score": 2.2302307199999998,
+        "price": 8.41
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_144918.csv",
+      "model": "momentum",
+      "candidate_count": 1752,
+      "equal": true,
+      "before_top1": {
+        "code": "600150",
+        "score": 1.96442716,
+        "price": 37.49
+      },
+      "after_top1": {
+        "code": "600150",
+        "score": 1.96442716,
+        "price": 37.49
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_144918.csv",
+      "model": "value_reversal",
+      "candidate_count": 1752,
+      "equal": true,
+      "before_top1": {
+        "code": "600479",
+        "score": 1.27015574,
+        "price": 12.9
+      },
+      "after_top1": {
+        "code": "600479",
+        "score": 1.27015574,
+        "price": 12.9
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_145737.csv",
+      "model": "balanced",
+      "candidate_count": 1799,
+      "equal": true,
+      "before_top1": {
+        "code": "002354",
+        "score": 2.29871214,
+        "price": 8.46
+      },
+      "after_top1": {
+        "code": "002354",
+        "score": 2.29871214,
+        "price": 8.46
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_145737.csv",
+      "model": "momentum",
+      "candidate_count": 1799,
+      "equal": true,
+      "before_top1": {
+        "code": "600150",
+        "score": 1.93666028,
+        "price": 37.46
+      },
+      "after_top1": {
+        "code": "600150",
+        "score": 1.93666028,
+        "price": 37.46
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_145737.csv",
+      "model": "value_reversal",
+      "candidate_count": 1799,
+      "equal": true,
+      "before_top1": {
+        "code": "601919",
+        "score": 1.2225973,
+        "price": 16.05
+      },
+      "after_top1": {
+        "code": "601919",
+        "score": 1.2225973,
+        "price": 16.05
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_151032.csv",
+      "model": "balanced",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "002354",
+        "score": 2.2804470400000003,
+        "price": 8.45
+      },
+      "after_top1": {
+        "code": "002354",
+        "score": 2.2804470400000003,
+        "price": 8.45
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_151032.csv",
+      "model": "momentum",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "600150",
+        "score": 1.93975656,
+        "price": 37.47
+      },
+      "after_top1": {
+        "code": "600150",
+        "score": 1.93975656,
+        "price": 37.47
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_151032.csv",
+      "model": "value_reversal",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "601919",
+        "score": 1.2153762600000002,
+        "price": 16.06
+      },
+      "after_top1": {
+        "code": "601919",
+        "score": 1.2153762600000002,
+        "price": 16.06
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_152047.csv",
+      "model": "balanced",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "002354",
+        "score": 2.2804470400000003,
+        "price": 8.45
+      },
+      "after_top1": {
+        "code": "002354",
+        "score": 2.2804470400000003,
+        "price": 8.45
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_152047.csv",
+      "model": "momentum",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "600150",
+        "score": 1.93975656,
+        "price": 37.47
+      },
+      "after_top1": {
+        "code": "600150",
+        "score": 1.93975656,
+        "price": 37.47
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260904_152047.csv",
+      "model": "value_reversal",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "601919",
+        "score": 1.2153762600000002,
+        "price": 16.06
+      },
+      "after_top1": {
+        "code": "601919",
+        "score": 1.2153762600000002,
+        "price": 16.06
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260905_202824.csv",
+      "model": "balanced",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "002354",
+        "score": 2.2804470400000003,
+        "price": 8.45
+      },
+      "after_top1": {
+        "code": "002354",
+        "score": 2.2804470400000003,
+        "price": 8.45
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260905_202824.csv",
+      "model": "momentum",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "600150",
+        "score": 1.93975656,
+        "price": 37.47
+      },
+      "after_top1": {
+        "code": "600150",
+        "score": 1.93975656,
+        "price": 37.47
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260905_202824.csv",
+      "model": "value_reversal",
+      "candidate_count": 1808,
+      "equal": true,
+      "before_top1": {
+        "code": "601919",
+        "score": 1.2153762600000002,
+        "price": 16.06
+      },
+      "after_top1": {
+        "code": "601919",
+        "score": 1.2153762600000002,
+        "price": 16.06
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_143004.csv",
+      "model": "balanced",
+      "candidate_count": 1517,
+      "equal": true,
+      "before_top1": {
+        "code": "600371",
+        "score": 1.7943041200000003,
+        "price": 14.94
+      },
+      "after_top1": {
+        "code": "600371",
+        "score": 1.7943041200000003,
+        "price": 14.94
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_143004.csv",
+      "model": "momentum",
+      "candidate_count": 1517,
+      "equal": true,
+      "before_top1": {
+        "code": "003040",
+        "score": 1.46117236,
+        "price": 23.0
+      },
+      "after_top1": {
+        "code": "003040",
+        "score": 1.46117236,
+        "price": 23.0
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_143004.csv",
+      "model": "value_reversal",
+      "candidate_count": 1517,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.65129476,
+        "price": 56.45
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.65129476,
+        "price": 56.45
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_150606.csv",
+      "model": "balanced",
+      "candidate_count": 1659,
+      "equal": true,
+      "before_top1": {
+        "code": "000892",
+        "score": 1.6004225399999998,
+        "price": 5.86
+      },
+      "after_top1": {
+        "code": "000892",
+        "score": 1.6004225399999998,
+        "price": 5.86
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_150606.csv",
+      "model": "momentum",
+      "candidate_count": 1659,
+      "equal": true,
+      "before_top1": {
+        "code": "002851",
+        "score": 1.50183048,
+        "price": 132.03
+      },
+      "after_top1": {
+        "code": "002851",
+        "score": 1.50183048,
+        "price": 132.03
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_150606.csv",
+      "model": "value_reversal",
+      "candidate_count": 1659,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.66766672,
+        "price": 56.36
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.66766672,
+        "price": 56.36
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_151011.csv",
+      "model": "balanced",
+      "candidate_count": 1659,
+      "equal": true,
+      "before_top1": {
+        "code": "000892",
+        "score": 1.6004225399999998,
+        "price": 5.86
+      },
+      "after_top1": {
+        "code": "000892",
+        "score": 1.6004225399999998,
+        "price": 5.86
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_151011.csv",
+      "model": "momentum",
+      "candidate_count": 1659,
+      "equal": true,
+      "before_top1": {
+        "code": "002851",
+        "score": 1.50183048,
+        "price": 132.03
+      },
+      "after_top1": {
+        "code": "002851",
+        "score": 1.50183048,
+        "price": 132.03
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260907_151011.csv",
+      "model": "value_reversal",
+      "candidate_count": 1659,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.66766672,
+        "price": 56.36
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.66766672,
+        "price": 56.36
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260908_143002.csv",
+      "model": "balanced",
+      "candidate_count": 1611,
+      "equal": true,
+      "before_top1": {
+        "code": "600371",
+        "score": 1.8696294399999998,
+        "price": 16.44
+      },
+      "after_top1": {
+        "code": "600371",
+        "score": 1.8696294399999998,
+        "price": 16.44
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260908_143002.csv",
+      "model": "momentum",
+      "candidate_count": 1611,
+      "equal": true,
+      "before_top1": {
+        "code": "002436",
+        "score": 1.81617084,
+        "price": 40.11
+      },
+      "after_top1": {
+        "code": "002436",
+        "score": 1.81617084,
+        "price": 40.11
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260908_143002.csv",
+      "model": "value_reversal",
+      "candidate_count": 1611,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.5441276800000001,
+        "price": 67.1
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.5441276800000001,
+        "price": 67.1
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260909_143743.csv",
+      "model": "balanced",
+      "candidate_count": 1596,
+      "equal": true,
+      "before_top1": {
+        "code": "600354",
+        "score": 1.7593001299999997,
+        "price": 10.84
+      },
+      "after_top1": {
+        "code": "600354",
+        "score": 1.7593001299999997,
+        "price": 10.84
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260909_143743.csv",
+      "model": "momentum",
+      "candidate_count": 1596,
+      "equal": true,
+      "before_top1": {
+        "code": "000988",
+        "score": 2.0106702800000003,
+        "price": 109.45
+      },
+      "after_top1": {
+        "code": "000988",
+        "score": 2.0106702800000003,
+        "price": 109.45
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260909_143743.csv",
+      "model": "value_reversal",
+      "candidate_count": 1596,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.36911304,
+        "price": 65.25
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.36911304,
+        "price": 65.25
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260910_195156.csv",
+      "model": "balanced",
+      "candidate_count": 1655,
+      "equal": true,
+      "before_top1": {
+        "code": "600354",
+        "score": 1.7366002200000006,
+        "price": 11.45
+      },
+      "after_top1": {
+        "code": "600354",
+        "score": 1.7366002200000006,
+        "price": 11.45
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260910_195156.csv",
+      "model": "momentum",
+      "candidate_count": 1655,
+      "equal": true,
+      "before_top1": {
+        "code": "605177",
+        "score": 1.9690481199999998,
+        "price": 24.71
+      },
+      "after_top1": {
+        "code": "605177",
+        "score": 1.9690481199999998,
+        "price": 24.71
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260910_195156.csv",
+      "model": "value_reversal",
+      "candidate_count": 1655,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.50157738,
+        "price": 62.39
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.50157738,
+        "price": 62.39
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260911_144953.csv",
+      "model": "balanced",
+      "candidate_count": 1751,
+      "equal": true,
+      "before_top1": {
+        "code": "002297",
+        "score": 1.7827403600000002,
+        "price": 23.68
+      },
+      "after_top1": {
+        "code": "002297",
+        "score": 1.7827403600000002,
+        "price": 23.68
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260911_144953.csv",
+      "model": "momentum",
+      "candidate_count": 1751,
+      "equal": true,
+      "before_top1": {
+        "code": "603601",
+        "score": 1.49450632,
+        "price": 10.86
+      },
+      "after_top1": {
+        "code": "603601",
+        "score": 1.49450632,
+        "price": 10.86
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260911_144953.csv",
+      "model": "value_reversal",
+      "candidate_count": 1751,
+      "equal": true,
+      "before_top1": {
+        "code": "000612",
+        "score": 1.2378687400000001,
+        "price": 10.61
+      },
+      "after_top1": {
+        "code": "000612",
+        "score": 1.2378687400000001,
+        "price": 10.61
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260911_155515.csv",
+      "model": "balanced",
+      "candidate_count": 1790,
+      "equal": true,
+      "before_top1": {
+        "code": "002297",
+        "score": 1.7139032099999998,
+        "price": 23.53
+      },
+      "after_top1": {
+        "code": "002297",
+        "score": 1.7139032099999998,
+        "price": 23.53
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260911_155515.csv",
+      "model": "momentum",
+      "candidate_count": 1790,
+      "equal": true,
+      "before_top1": {
+        "code": "601869",
+        "score": 1.5169771600000002,
+        "price": 473.99
+      },
+      "after_top1": {
+        "code": "601869",
+        "score": 1.5169771600000002,
+        "price": 473.99
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260911_155515.csv",
+      "model": "value_reversal",
+      "candidate_count": 1790,
+      "equal": true,
+      "before_top1": {
+        "code": "000612",
+        "score": 1.23544446,
+        "price": 10.61
+      },
+      "after_top1": {
+        "code": "000612",
+        "score": 1.23544446,
+        "price": 10.61
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260914_143559.csv",
+      "model": "balanced",
+      "candidate_count": 1442,
+      "equal": true,
+      "before_top1": {
+        "code": "001232",
+        "score": 1.98221637,
+        "price": 199.94
+      },
+      "after_top1": {
+        "code": "001232",
+        "score": 1.98221637,
+        "price": 199.94
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260914_143559.csv",
+      "model": "momentum",
+      "candidate_count": 1442,
+      "equal": true,
+      "before_top1": {
+        "code": "001232",
+        "score": 1.77784916,
+        "price": 199.94
+      },
+      "after_top1": {
+        "code": "001232",
+        "score": 1.77784916,
+        "price": 199.94
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260914_143559.csv",
+      "model": "value_reversal",
+      "candidate_count": 1442,
+      "equal": true,
+      "before_top1": {
+        "code": "002432",
+        "score": 1.47241196,
+        "price": 59.36
+      },
+      "after_top1": {
+        "code": "002432",
+        "score": 1.47241196,
+        "price": 59.36
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260915_143057.csv",
+      "model": "balanced",
+      "candidate_count": 1368,
+      "equal": true,
+      "before_top1": {
+        "code": "002212",
+        "score": 2.28597646,
+        "price": 7.98
+      },
+      "after_top1": {
+        "code": "002212",
+        "score": 2.28597646,
+        "price": 7.98
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260915_143057.csv",
+      "model": "momentum",
+      "candidate_count": 1368,
+      "equal": true,
+      "before_top1": {
+        "code": "000993",
+        "score": 2.14867008,
+        "price": 16.74
+      },
+      "after_top1": {
+        "code": "000993",
+        "score": 2.14867008,
+        "price": 16.74
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260915_143057.csv",
+      "model": "value_reversal",
+      "candidate_count": 1368,
+      "equal": true,
+      "before_top1": {
+        "code": "600036",
+        "score": 1.2345859200000002,
+        "price": 41.1
+      },
+      "after_top1": {
+        "code": "600036",
+        "score": 1.2345859200000002,
+        "price": 41.1
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260915_203026.csv",
+      "model": "balanced",
+      "candidate_count": 1508,
+      "equal": true,
+      "before_top1": {
+        "code": "000823",
+        "score": 2.2362945,
+        "price": 23.9
+      },
+      "after_top1": {
+        "code": "000823",
+        "score": 2.2362945,
+        "price": 23.9
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260915_203026.csv",
+      "model": "momentum",
+      "candidate_count": 1508,
+      "equal": true,
+      "before_top1": {
+        "code": "002842",
+        "score": 2.00788872,
+        "price": 36.6
+      },
+      "after_top1": {
+        "code": "002842",
+        "score": 2.00788872,
+        "price": 36.6
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260915_203026.csv",
+      "model": "value_reversal",
+      "candidate_count": 1508,
+      "equal": true,
+      "before_top1": {
+        "code": "600036",
+        "score": 1.22673754,
+        "price": 41.1
+      },
+      "after_top1": {
+        "code": "600036",
+        "score": 1.22673754,
+        "price": 41.1
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260916_143223.csv",
+      "model": "balanced",
+      "candidate_count": 1417,
+      "equal": true,
+      "before_top1": {
+        "code": "002579",
+        "score": 1.6464594799999999,
+        "price": 19.6
+      },
+      "after_top1": {
+        "code": "002579",
+        "score": 1.6464594799999999,
+        "price": 19.6
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260916_143223.csv",
+      "model": "momentum",
+      "candidate_count": 1417,
+      "equal": true,
+      "before_top1": {
+        "code": "002396",
+        "score": 1.45805092,
+        "price": 38.23
+      },
+      "after_top1": {
+        "code": "002396",
+        "score": 1.45805092,
+        "price": 38.23
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260916_143223.csv",
+      "model": "value_reversal",
+      "candidate_count": 1417,
+      "equal": true,
+      "before_top1": {
+        "code": "600919",
+        "score": 1.4068852000000003,
+        "price": 12.16
+      },
+      "after_top1": {
+        "code": "600919",
+        "score": 1.4068852000000003,
+        "price": 12.16
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260916_170007.csv",
+      "model": "balanced",
+      "candidate_count": 1528,
+      "equal": true,
+      "before_top1": {
+        "code": "002579",
+        "score": 1.64253052,
+        "price": 19.65
+      },
+      "after_top1": {
+        "code": "002579",
+        "score": 1.64253052,
+        "price": 19.65
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260916_170007.csv",
+      "model": "momentum",
+      "candidate_count": 1528,
+      "equal": true,
+      "before_top1": {
+        "code": "605258",
+        "score": 1.3610416,
+        "price": 39.3
+      },
+      "after_top1": {
+        "code": "605258",
+        "score": 1.3610416,
+        "price": 39.3
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260916_170007.csv",
+      "model": "value_reversal",
+      "candidate_count": 1528,
+      "equal": true,
+      "before_top1": {
+        "code": "002142",
+        "score": 1.4514699,
+        "price": 34.31
+      },
+      "after_top1": {
+        "code": "002142",
+        "score": 1.4514699,
+        "price": 34.31
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260917_144005.csv",
+      "model": "balanced",
+      "candidate_count": 1425,
+      "equal": true,
+      "before_top1": {
+        "code": "002584",
+        "score": 1.6044881599999998,
+        "price": 9.66
+      },
+      "after_top1": {
+        "code": "002584",
+        "score": 1.6044881599999998,
+        "price": 9.66
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260917_144005.csv",
+      "model": "momentum",
+      "candidate_count": 1425,
+      "equal": true,
+      "before_top1": {
+        "code": "000713",
+        "score": 0.95235972,
+        "price": 6.79
+      },
+      "after_top1": {
+        "code": "000713",
+        "score": 0.95235972,
+        "price": 6.79
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260917_144005.csv",
+      "model": "value_reversal",
+      "candidate_count": 1425,
+      "equal": true,
+      "before_top1": {
+        "code": "600036",
+        "score": 1.23035932,
+        "price": 40.58
+      },
+      "after_top1": {
+        "code": "600036",
+        "score": 1.23035932,
+        "price": 40.58
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260917_152032.csv",
+      "model": "balanced",
+      "candidate_count": 1523,
+      "equal": true,
+      "before_top1": {
+        "code": "002584",
+        "score": 1.57869859,
+        "price": 9.52
+      },
+      "after_top1": {
+        "code": "002584",
+        "score": 1.57869859,
+        "price": 9.52
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260917_152032.csv",
+      "model": "momentum",
+      "candidate_count": 1523,
+      "equal": true,
+      "before_top1": {
+        "code": "000725",
+        "score": 0.7070049199999999,
+        "price": 5.75
+      },
+      "after_top1": {
+        "code": "000725",
+        "score": 0.7070049199999999,
+        "price": 5.75
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260917_152032.csv",
+      "model": "value_reversal",
+      "candidate_count": 1523,
+      "equal": true,
+      "before_top1": {
+        "code": "600036",
+        "score": 1.20962772,
+        "price": 40.6
+      },
+      "after_top1": {
+        "code": "600036",
+        "score": 1.20962772,
+        "price": 40.6
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_143116.csv",
+      "model": "balanced",
+      "candidate_count": 1445,
+      "equal": true,
+      "before_top1": {
+        "code": "002902",
+        "score": 1.52001558,
+        "price": 31.24
+      },
+      "after_top1": {
+        "code": "002902",
+        "score": 1.52001558,
+        "price": 31.24
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_143116.csv",
+      "model": "momentum",
+      "candidate_count": 1445,
+      "equal": true,
+      "before_top1": {
+        "code": "000993",
+        "score": 1.02981932,
+        "price": 19.72
+      },
+      "after_top1": {
+        "code": "000993",
+        "score": 1.02981932,
+        "price": 19.72
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_143116.csv",
+      "model": "value_reversal",
+      "candidate_count": 1445,
+      "equal": true,
+      "before_top1": {
+        "code": "600016",
+        "score": 1.3379138400000001,
+        "price": 3.46
+      },
+      "after_top1": {
+        "code": "600016",
+        "score": 1.3379138400000001,
+        "price": 3.46
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_144220.csv",
+      "model": "balanced",
+      "candidate_count": 1495,
+      "equal": true,
+      "before_top1": {
+        "code": "002902",
+        "score": 1.52978258,
+        "price": 31.28
+      },
+      "after_top1": {
+        "code": "002902",
+        "score": 1.52978258,
+        "price": 31.28
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_144220.csv",
+      "model": "momentum",
+      "candidate_count": 1495,
+      "equal": true,
+      "before_top1": {
+        "code": "000993",
+        "score": 1.0512868,
+        "price": 19.7
+      },
+      "after_top1": {
+        "code": "000993",
+        "score": 1.0512868,
+        "price": 19.7
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_144220.csv",
+      "model": "value_reversal",
+      "candidate_count": 1495,
+      "equal": true,
+      "before_top1": {
+        "code": "600016",
+        "score": 1.3358170600000001,
+        "price": 3.47
+      },
+      "after_top1": {
+        "code": "600016",
+        "score": 1.3358170600000001,
+        "price": 3.47
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_200636.csv",
+      "model": "balanced",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "002902",
+        "score": 1.5226813600000002,
+        "price": 31.2
+      },
+      "after_top1": {
+        "code": "002902",
+        "score": 1.5226813600000002,
+        "price": 31.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_200636.csv",
+      "model": "momentum",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "000993",
+        "score": 1.08332516,
+        "price": 19.6
+      },
+      "after_top1": {
+        "code": "000993",
+        "score": 1.08332516,
+        "price": 19.6
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_200636.csv",
+      "model": "value_reversal",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "600016",
+        "score": 1.38569598,
+        "price": 3.46
+      },
+      "after_top1": {
+        "code": "600016",
+        "score": 1.38569598,
+        "price": 3.46
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_200826.csv",
+      "model": "balanced",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "002902",
+        "score": 1.5226813600000002,
+        "price": 31.2
+      },
+      "after_top1": {
+        "code": "002902",
+        "score": 1.5226813600000002,
+        "price": 31.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_200826.csv",
+      "model": "momentum",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "000993",
+        "score": 1.08332516,
+        "price": 19.6
+      },
+      "after_top1": {
+        "code": "000993",
+        "score": 1.08332516,
+        "price": 19.6
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260918_200826.csv",
+      "model": "value_reversal",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "600016",
+        "score": 1.38569598,
+        "price": 3.46
+      },
+      "after_top1": {
+        "code": "600016",
+        "score": 1.38569598,
+        "price": 3.46
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260919_170159.csv",
+      "model": "balanced",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "002902",
+        "score": 1.52268124,
+        "price": 31.2
+      },
+      "after_top1": {
+        "code": "002902",
+        "score": 1.52268124,
+        "price": 31.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260919_170159.csv",
+      "model": "momentum",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "000993",
+        "score": 1.08332516,
+        "price": 19.6
+      },
+      "after_top1": {
+        "code": "000993",
+        "score": 1.08332516,
+        "price": 19.6
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260919_170159.csv",
+      "model": "value_reversal",
+      "candidate_count": 1609,
+      "equal": true,
+      "before_top1": {
+        "code": "600016",
+        "score": 1.38569598,
+        "price": 3.46
+      },
+      "after_top1": {
+        "code": "600016",
+        "score": 1.38569598,
+        "price": 3.46
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260921_143700.csv",
+      "model": "balanced",
+      "candidate_count": 1601,
+      "equal": true,
+      "before_top1": {
+        "code": "002437",
+        "score": 1.4414177499999998,
+        "price": 3.75
+      },
+      "after_top1": {
+        "code": "002437",
+        "score": 1.4414177499999998,
+        "price": 3.75
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260921_143700.csv",
+      "model": "momentum",
+      "candidate_count": 1601,
+      "equal": true,
+      "before_top1": {
+        "code": "600383",
+        "score": 1.4102328,
+        "price": 2.47
+      },
+      "after_top1": {
+        "code": "600383",
+        "score": 1.4102328,
+        "price": 2.47
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260921_143700.csv",
+      "model": "value_reversal",
+      "candidate_count": 1601,
+      "equal": true,
+      "before_top1": {
+        "code": "600502",
+        "score": 1.42454904,
+        "price": 4.13
+      },
+      "after_top1": {
+        "code": "600502",
+        "score": 1.42454904,
+        "price": 4.13
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260921_153236.csv",
+      "model": "balanced",
+      "candidate_count": 1750,
+      "equal": true,
+      "before_top1": {
+        "code": "000823",
+        "score": 1.51980263,
+        "price": 25.2
+      },
+      "after_top1": {
+        "code": "000823",
+        "score": 1.51980263,
+        "price": 25.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260921_153236.csv",
+      "model": "momentum",
+      "candidate_count": 1750,
+      "equal": true,
+      "before_top1": {
+        "code": "600383",
+        "score": 1.40326568,
+        "price": 2.47
+      },
+      "after_top1": {
+        "code": "600383",
+        "score": 1.40326568,
+        "price": 2.47
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260921_153236.csv",
+      "model": "value_reversal",
+      "candidate_count": 1750,
+      "equal": true,
+      "before_top1": {
+        "code": "000651",
+        "score": 1.40217536,
+        "price": 38.0
+      },
+      "after_top1": {
+        "code": "000651",
+        "score": 1.40217536,
+        "price": 38.0
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260922_143445.csv",
+      "model": "balanced",
+      "candidate_count": 1618,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.74463758,
+        "price": 16.36
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.74463758,
+        "price": 16.36
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260922_143445.csv",
+      "model": "momentum",
+      "candidate_count": 1618,
+      "equal": true,
+      "before_top1": {
+        "code": "600722",
+        "score": 1.61482624,
+        "price": 17.89
+      },
+      "after_top1": {
+        "code": "600722",
+        "score": 1.61482624,
+        "price": 17.89
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260922_143445.csv",
+      "model": "value_reversal",
+      "candidate_count": 1618,
+      "equal": true,
+      "before_top1": {
+        "code": "601872",
+        "score": 1.3244962400000002,
+        "price": 21.37
+      },
+      "after_top1": {
+        "code": "601872",
+        "score": 1.3244962400000002,
+        "price": 21.37
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260923_144550.csv",
+      "model": "balanced",
+      "candidate_count": 1546,
+      "equal": true,
+      "before_top1": {
+        "code": "000823",
+        "score": 2.2893658199999996,
+        "price": 27.54
+      },
+      "after_top1": {
+        "code": "000823",
+        "score": 2.2893658199999996,
+        "price": 27.54
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260923_144550.csv",
+      "model": "momentum",
+      "candidate_count": 1546,
+      "equal": true,
+      "before_top1": {
+        "code": "600641",
+        "score": 2.0830927200000002,
+        "price": 47.74
+      },
+      "after_top1": {
+        "code": "600641",
+        "score": 2.0830927200000002,
+        "price": 47.74
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260923_144550.csv",
+      "model": "value_reversal",
+      "candidate_count": 1546,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.18403666,
+        "price": 53.97
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.18403666,
+        "price": 53.97
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260923_144821.csv",
+      "model": "balanced",
+      "candidate_count": 1555,
+      "equal": true,
+      "before_top1": {
+        "code": "000823",
+        "score": 2.282693,
+        "price": 27.52
+      },
+      "after_top1": {
+        "code": "000823",
+        "score": 2.282693,
+        "price": 27.52
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260923_144821.csv",
+      "model": "momentum",
+      "candidate_count": 1555,
+      "equal": true,
+      "before_top1": {
+        "code": "600641",
+        "score": 2.086146,
+        "price": 47.73
+      },
+      "after_top1": {
+        "code": "600641",
+        "score": 2.086146,
+        "price": 47.73
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260923_144821.csv",
+      "model": "value_reversal",
+      "candidate_count": 1555,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.18859078,
+        "price": 53.93
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.18859078,
+        "price": 53.93
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260924_143746.csv",
+      "model": "balanced",
+      "candidate_count": 1459,
+      "equal": true,
+      "before_top1": {
+        "code": "000504",
+        "score": 1.7688919900000002,
+        "price": 13.74
+      },
+      "after_top1": {
+        "code": "000504",
+        "score": 1.7688919900000002,
+        "price": 13.74
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260924_143746.csv",
+      "model": "momentum",
+      "candidate_count": 1459,
+      "equal": true,
+      "before_top1": {
+        "code": "600641",
+        "score": 1.8632128799999998,
+        "price": 51.4
+      },
+      "after_top1": {
+        "code": "600641",
+        "score": 1.8632128799999998,
+        "price": 51.4
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260924_143746.csv",
+      "model": "value_reversal",
+      "candidate_count": 1459,
+      "equal": true,
+      "before_top1": {
+        "code": "601628",
+        "score": 1.3275675000000002,
+        "price": 37.41
+      },
+      "after_top1": {
+        "code": "601628",
+        "score": 1.3275675000000002,
+        "price": 37.41
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260928_143248.csv",
+      "model": "balanced",
+      "candidate_count": 1455,
+      "equal": true,
+      "before_top1": {
+        "code": "601091",
+        "score": 2.1217396500000003,
+        "price": 27.61
+      },
+      "after_top1": {
+        "code": "601091",
+        "score": 2.1217396500000003,
+        "price": 27.61
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260928_143248.csv",
+      "model": "momentum",
+      "candidate_count": 1455,
+      "equal": true,
+      "before_top1": {
+        "code": "600707",
+        "score": 1.86798548,
+        "price": 10.31
+      },
+      "after_top1": {
+        "code": "600707",
+        "score": 1.86798548,
+        "price": 10.31
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260928_143248.csv",
+      "model": "value_reversal",
+      "candidate_count": 1455,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.2563466,
+        "price": 52.31
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.2563466,
+        "price": 52.31
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_031850.csv",
+      "model": "balanced",
+      "candidate_count": 1569,
+      "equal": true,
+      "before_top1": {
+        "code": "601091",
+        "score": 2.09181272,
+        "price": 27.71
+      },
+      "after_top1": {
+        "code": "601091",
+        "score": 2.09181272,
+        "price": 27.71
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_031850.csv",
+      "model": "momentum",
+      "candidate_count": 1569,
+      "equal": true,
+      "before_top1": {
+        "code": "600707",
+        "score": 1.9407015200000002,
+        "price": 10.38
+      },
+      "after_top1": {
+        "code": "600707",
+        "score": 1.9407015200000002,
+        "price": 10.38
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_031850.csv",
+      "model": "value_reversal",
+      "candidate_count": 1569,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.2419323000000002,
+        "price": 52.4
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.2419323000000002,
+        "price": 52.4
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_144245.csv",
+      "model": "balanced",
+      "candidate_count": 1315,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 2.0330871900000003,
+        "price": 12.93
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 2.0330871900000003,
+        "price": 12.93
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_144245.csv",
+      "model": "momentum",
+      "candidate_count": 1315,
+      "equal": true,
+      "before_top1": {
+        "code": "002172",
+        "score": 1.75221536,
+        "price": 5.51
+      },
+      "after_top1": {
+        "code": "002172",
+        "score": 1.75221536,
+        "price": 5.51
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_144245.csv",
+      "model": "value_reversal",
+      "candidate_count": 1315,
+      "equal": true,
+      "before_top1": {
+        "code": "000703",
+        "score": 1.65071016,
+        "price": 15.75
+      },
+      "after_top1": {
+        "code": "000703",
+        "score": 1.65071016,
+        "price": 15.75
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_152241.csv",
+      "model": "balanced",
+      "candidate_count": 1419,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 2.00571873,
+        "price": 12.95
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 2.00571873,
+        "price": 12.95
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_152241.csv",
+      "model": "momentum",
+      "candidate_count": 1419,
+      "equal": true,
+      "before_top1": {
+        "code": "001389",
+        "score": 1.6893057200000001,
+        "price": 191.84
+      },
+      "after_top1": {
+        "code": "001389",
+        "score": 1.6893057200000001,
+        "price": 191.84
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260929_152241.csv",
+      "model": "value_reversal",
+      "candidate_count": 1419,
+      "equal": true,
+      "before_top1": {
+        "code": "000703",
+        "score": 1.67040574,
+        "price": 15.69
+      },
+      "after_top1": {
+        "code": "000703",
+        "score": 1.67040574,
+        "price": 15.69
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260930_143116.csv",
+      "model": "balanced",
+      "candidate_count": 1332,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 1.35860849,
+        "price": 13.2
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 1.35860849,
+        "price": 13.2
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260930_143116.csv",
+      "model": "momentum",
+      "candidate_count": 1332,
+      "equal": true,
+      "before_top1": {
+        "code": "002487",
+        "score": 1.04518904,
+        "price": 46.52
+      },
+      "after_top1": {
+        "code": "002487",
+        "score": 1.04518904,
+        "price": 46.52
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260930_143116.csv",
+      "model": "value_reversal",
+      "candidate_count": 1332,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.1691851,
+        "price": 53.4
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.1691851,
+        "price": 53.4
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260930_181510.csv",
+      "model": "balanced",
+      "candidate_count": 1486,
+      "equal": true,
+      "before_top1": {
+        "code": "600721",
+        "score": 1.34015583,
+        "price": 13.11
+      },
+      "after_top1": {
+        "code": "600721",
+        "score": 1.34015583,
+        "price": 13.11
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260930_181510.csv",
+      "model": "momentum",
+      "candidate_count": 1486,
+      "equal": true,
+      "before_top1": {
+        "code": "002487",
+        "score": 1.05290908,
+        "price": 46.29
+      },
+      "after_top1": {
+        "code": "002487",
+        "score": 1.05290908,
+        "price": 46.29
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20260930_181510.csv",
+      "model": "value_reversal",
+      "candidate_count": 1486,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.1639211,
+        "price": 53.29
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.1639211,
+        "price": 53.29
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261008_144142.csv",
+      "model": "balanced",
+      "candidate_count": 1587,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 2.2299328199999997,
+        "price": 14.03
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 2.2299328199999997,
+        "price": 14.03
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261008_144142.csv",
+      "model": "momentum",
+      "candidate_count": 1587,
+      "equal": true,
+      "before_top1": {
+        "code": "601872",
+        "score": 1.9313300400000002,
+        "price": 22.03
+      },
+      "after_top1": {
+        "code": "601872",
+        "score": 1.9313300400000002,
+        "price": 22.03
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261008_144142.csv",
+      "model": "value_reversal",
+      "candidate_count": 1587,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.26758864,
+        "price": 52.66
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.26758864,
+        "price": 52.66
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261008_204857.csv",
+      "model": "balanced",
+      "candidate_count": 1680,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 2.0172483,
+        "price": 13.8
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 2.0172483,
+        "price": 13.8
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261008_204857.csv",
+      "model": "momentum",
+      "candidate_count": 1680,
+      "equal": true,
+      "before_top1": {
+        "code": "601872",
+        "score": 1.87882384,
+        "price": 22.03
+      },
+      "after_top1": {
+        "code": "601872",
+        "score": 1.87882384,
+        "price": 22.03
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261008_204857.csv",
+      "model": "value_reversal",
+      "candidate_count": 1680,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.28429042,
+        "price": 52.67
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.28429042,
+        "price": 52.67
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261011_130825.csv",
+      "model": "balanced",
+      "candidate_count": 1861,
+      "equal": true,
+      "before_top1": {
+        "code": "603200",
+        "score": 1.50469454,
+        "price": 53.92
+      },
+      "after_top1": {
+        "code": "603200",
+        "score": 1.50469454,
+        "price": 53.92
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261011_130825.csv",
+      "model": "momentum",
+      "candidate_count": 1861,
+      "equal": true,
+      "before_top1": {
+        "code": "002709",
+        "score": 1.66105256,
+        "price": 35.68
+      },
+      "after_top1": {
+        "code": "002709",
+        "score": 1.66105256,
+        "price": 35.68
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261011_130825.csv",
+      "model": "value_reversal",
+      "candidate_count": 1861,
+      "equal": true,
+      "before_top1": {
+        "code": "600418",
+        "score": 1.3436597800000003,
+        "price": 22.75
+      },
+      "after_top1": {
+        "code": "600418",
+        "score": 1.3436597800000003,
+        "price": 22.75
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261012_143001.csv",
+      "model": "balanced",
+      "candidate_count": 1504,
+      "equal": true,
+      "before_top1": {
+        "code": "002866",
+        "score": 1.7774630400000002,
+        "price": 19.05
+      },
+      "after_top1": {
+        "code": "002866",
+        "score": 1.7774630400000002,
+        "price": 19.05
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261012_143001.csv",
+      "model": "momentum",
+      "candidate_count": 1504,
+      "equal": true,
+      "before_top1": {
+        "code": "601127",
+        "score": 1.9573628800000002,
+        "price": 50.8
+      },
+      "after_top1": {
+        "code": "601127",
+        "score": 1.9573628800000002,
+        "price": 50.8
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261012_143001.csv",
+      "model": "value_reversal",
+      "candidate_count": 1504,
+      "equal": true,
+      "before_top1": {
+        "code": "601233",
+        "score": 1.23588612,
+        "price": 21.13
+      },
+      "after_top1": {
+        "code": "601233",
+        "score": 1.23588612,
+        "price": 21.13
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261012_143334.csv",
+      "model": "balanced",
+      "candidate_count": 1514,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.91303934,
+        "price": 15.1
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.91303934,
+        "price": 15.1
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261012_143334.csv",
+      "model": "momentum",
+      "candidate_count": 1514,
+      "equal": true,
+      "before_top1": {
+        "code": "600715",
+        "score": 1.82118568,
+        "price": 1.92
+      },
+      "after_top1": {
+        "code": "600715",
+        "score": 1.82118568,
+        "price": 1.92
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261012_143334.csv",
+      "model": "value_reversal",
+      "candidate_count": 1514,
+      "equal": true,
+      "before_top1": {
+        "code": "601233",
+        "score": 1.23770312,
+        "price": 21.1
+      },
+      "after_top1": {
+        "code": "601233",
+        "score": 1.23770312,
+        "price": 21.1
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261013_143253.csv",
+      "model": "balanced",
+      "candidate_count": 1612,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.79267132,
+        "price": 14.16
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.79267132,
+        "price": 14.16
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261013_143253.csv",
+      "model": "momentum",
+      "candidate_count": 1612,
+      "equal": true,
+      "before_top1": {
+        "code": "600316",
+        "score": 1.6646405599999998,
+        "price": 33.3
+      },
+      "after_top1": {
+        "code": "600316",
+        "score": 1.6646405599999998,
+        "price": 33.3
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261013_143253.csv",
+      "model": "value_reversal",
+      "candidate_count": 1612,
+      "equal": true,
+      "before_top1": {
+        "code": "601318",
+        "score": 1.7116951,
+        "price": 51.51
+      },
+      "after_top1": {
+        "code": "601318",
+        "score": 1.7116951,
+        "price": 51.51
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261014_143002.csv",
+      "model": "balanced",
+      "candidate_count": 1418,
+      "equal": true,
+      "before_top1": {
+        "code": "002639",
+        "score": 1.8104408300000001,
+        "price": 15.25
+      },
+      "after_top1": {
+        "code": "002639",
+        "score": 1.8104408300000001,
+        "price": 15.25
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261014_143002.csv",
+      "model": "momentum",
+      "candidate_count": 1418,
+      "equal": true,
+      "before_top1": {
+        "code": "605058",
+        "score": 1.85239744,
+        "price": 65.04
+      },
+      "after_top1": {
+        "code": "605058",
+        "score": 1.85239744,
+        "price": 65.04
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261014_143002.csv",
+      "model": "value_reversal",
+      "candidate_count": 1418,
+      "equal": true,
+      "before_top1": {
+        "code": "002452",
+        "score": 1.5185138,
+        "price": 9.82
+      },
+      "after_top1": {
+        "code": "002452",
+        "score": 1.5185138,
+        "price": 9.82
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261014_143542.csv",
+      "model": "balanced",
+      "candidate_count": 1439,
+      "equal": true,
+      "before_top1": {
+        "code": "002639",
+        "score": 1.8205697200000004,
+        "price": 15.26
+      },
+      "after_top1": {
+        "code": "002639",
+        "score": 1.8205697200000004,
+        "price": 15.26
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261014_143542.csv",
+      "model": "momentum",
+      "candidate_count": 1439,
+      "equal": true,
+      "before_top1": {
+        "code": "001216",
+        "score": 2.0229535199999997,
+        "price": 23.74
+      },
+      "after_top1": {
+        "code": "001216",
+        "score": 2.0229535199999997,
+        "price": 23.74
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261014_143542.csv",
+      "model": "value_reversal",
+      "candidate_count": 1439,
+      "equal": true,
+      "before_top1": {
+        "code": "002452",
+        "score": 1.50716328,
+        "price": 9.81
+      },
+      "after_top1": {
+        "code": "002452",
+        "score": 1.50716328,
+        "price": 9.81
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261019_143852.csv",
+      "model": "balanced",
+      "candidate_count": 1455,
+      "equal": true,
+      "before_top1": {
+        "code": "002343",
+        "score": 2.3130718200000002,
+        "price": 10.08
+      },
+      "after_top1": {
+        "code": "002343",
+        "score": 2.3130718200000002,
+        "price": 10.08
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261019_143852.csv",
+      "model": "momentum",
+      "candidate_count": 1455,
+      "equal": true,
+      "before_top1": {
+        "code": "000503",
+        "score": 1.7737857599999998,
+        "price": 8.49
+      },
+      "after_top1": {
+        "code": "000503",
+        "score": 1.7737857599999998,
+        "price": 8.49
+      }
+    },
+    {
+      "snapshot": "runtime/agents/market/data/market_20261019_143852.csv",
+      "model": "value_reversal",
+      "candidate_count": 1455,
+      "equal": true,
+      "before_top1": {
+        "code": "600127",
+        "score": 1.3354463600000002,
+        "price": 13.23
+      },
+      "after_top1": {
+        "code": "600127",
+        "score": 1.3354463600000002,
+        "price": 13.23
+      }
+    },
+    {
+      "snapshot": "runtime/research_backtests/close_inputs_20261015_16/2026-10-15.csv",
+      "model": "balanced",
+      "candidate_count": 1710,
+      "equal": true,
+      "before_top1": {
+        "code": "000823",
+        "score": 3.19127128,
+        "price": 25.87
+      },
+      "after_top1": {
+        "code": "000823",
+        "score": 3.19127128,
+        "price": 25.87
+      }
+    },
+    {
+      "snapshot": "runtime/research_backtests/close_inputs_20261015_16/2026-10-15.csv",
+      "model": "momentum",
+      "candidate_count": 1710,
+      "equal": true,
+      "before_top1": {
+        "code": "603258",
+        "score": 3.50027228,
+        "price": 16.81
+      },
+      "after_top1": {
+        "code": "603258",
+        "score": 3.50027228,
+        "price": 16.81
+      }
+    },
+    {
+      "snapshot": "runtime/research_backtests/close_inputs_20261015_16/2026-10-15.csv",
+      "model": "value_reversal",
+      "candidate_count": 1710,
+      "equal": true,
+      "before_top1": {
+        "code": "000600",
+        "score": 1.9122258600000002,
+        "price": 6.52
+      },
+      "after_top1": {
+        "code": "000600",
+        "score": 1.9122258600000002,
+        "price": 6.52
+      }
+    },
+    {
+      "snapshot": "runtime/research_backtests/close_inputs_20261015_16/2026-10-16.csv",
+      "model": "balanced",
+      "candidate_count": 1680,
+      "equal": true,
+      "before_top1": {
+        "code": "002343",
+        "score": 3.96096368,
+        "price": 9.33
+      },
+      "after_top1": {
+        "code": "002343",
+        "score": 3.96096368,
+        "price": 9.33
+      }
+    },
+    {
+      "snapshot": "runtime/research_backtests/close_inputs_20261015_16/2026-10-16.csv",
+      "model": "momentum",
+      "candidate_count": 1680,
+      "equal": true,
+      "before_top1": {
+        "code": "002626",
+        "score": 4.72329876,
+        "price": 16.71
+      },
+      "after_top1": {
+        "code": "002626",
+        "score": 4.72329876,
+        "price": 16.71
+      }
+    },
+    {
+      "snapshot": "runtime/research_backtests/close_inputs_20261015_16/2026-10-16.csv",
+      "model": "value_reversal",
+      "candidate_count": 1680,
+      "equal": true,
+      "before_top1": {
+        "code": "002379",
+        "score": 2.11043982,
+        "price": 14.16
+      },
+      "after_top1": {
+        "code": "002379",
+        "score": 2.11043982,
+        "price": 14.16
+      }
+    }
+  ]
+}

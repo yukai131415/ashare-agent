@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "a-stock-research": {
+      "command": "a-stock-mcp",
+      "args": []
+    }
+  }
+}

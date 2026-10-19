@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a-stock-multi-agent"
+version = "0.2.1"
+description = "A 股数据、新闻、分析、推荐和回测多 Agent 系统"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["langgraph>=1.2,<2", "langchain-core>=1.4,<2", "mcp>=1.20,<2", "pymilvus>=2.6,<3", "milvus-lite==3.2.2"]
+
+[project.scripts]
+a-stock-agents = "a_stock_agents.cli:main"
+a-stock-mcp = "a_stock_agents.mcp_server:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+

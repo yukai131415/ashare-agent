@@ -1,0 +1,7 @@
+{
+  "ok": false,
+  "status": "连接失败",
+  "message": "大模型请求失败（HTTP 429：请求额度、余额或速率限制已达到上限。 服务详情：You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.）。",
+  "model": "本地规则解释",
+  "tested_at": "2026-10-19T21:00:09+08:00"
+}

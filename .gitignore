@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+runtime/agents/*/data/*
+runtime/agents/*/raw/*
+runtime/agents/*/logs/*
+runtime/state/*.json
+!runtime/**/.gitkeep
+
+# Local state, credentials, generated artifacts and downloaded dependencies
+runtime/
+output/
+tmp/
+.idea/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite3
+*.db
+*.db-wal
+*.db-shm
+*.log
+*.pem
+*.key
+tools/video_deps/
+config/*local*
+config/*secret*
+/=
+# Personal API experiment; not part of the automated test suite
+tests/test.py
+
