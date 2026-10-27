@@ -4,8 +4,10 @@ from __future__ import annotations
 import hashlib
 import re
 import uuid
+import time
 from dataclasses import asdict
 from datetime import date
+from datetime import datetime, timezone
 from typing import Any, Callable
 from langchain_core.tools import StructuredTool
 from langchain_core.utils.function_calling import convert_to_openai_tool
@@ -14,7 +16,7 @@ from .agents.market import parse_tencent_quotes
 from .contracts import iso_now
 from .http import HttpClient
 from .research import ResearchIndex
-from .storage import atomic_write_json, read_csv
+from .storage import atomic_write_json, read_csv, read_json
 
 
 class EmptyArgs(BaseModel):
@@ -63,24 +65,38 @@ class AgentTools:
             ]
         for name, fn, schema, description in definitions:
             self.tools[name] = StructuredTool.from_function(fn, name=name, description=description, args_schema=schema)
+        from .harness.planning.tool import execution_plan_tool
+        self.tools['get_execution_plan']=execution_plan_tool
 
     def call(self, name, arguments=None):
+        from .console_log import console_event
+        started=time.monotonic()
         identifier = uuid.uuid4().hex
         call = {'id':identifier,'name':name,'arguments':arguments or {},'started_at':iso_now()}
         self.event({'status':'tool_started','tool':name,'call_id':identifier})
+        console_event('tool_started',tool=name,call_id=identifier,arguments=arguments or {})
         try:
             if name not in self.tools:
                 raise ValueError('Unknown tool: '+name)
-            result = self.tools[name].invoke(arguments or {})
+            from .harness.gateway import tool_boundary
+            with tool_boundary(name,arguments or {}) as artifact:
+                result = self.tools[name].invoke(arguments or {})
+                artifact['result']=result
             call['ok'] = True
+            console_event('tool_result',tool=name,call_id=identifier,status=result.get('status') if isinstance(result,dict) else 'returned',
+                          result=result,
+                          counts={k:len(v) for k,v in result.items() if isinstance(v,list)} if isinstance(result,dict) else {})
             return result
         except Exception as exc:
             call['ok'] = False
             call['error_type'] = type(exc).__name__
+            import traceback
+            console_event('tool_failed',tool=name,call_id=identifier,error_type=type(exc).__name__,message=str(exc),traceback=traceback.format_exc())
             raise
         finally:
             call['finished_at'] = iso_now()
             self.calls.append(call)
+            console_event('tool_finished',tool=name,call_id=identifier,ok=call.get('ok',False),duration_ms=round((time.monotonic()-started)*1000))
             self.event({'status':'tool_finished','tool':name,'call_id':identifier,'ok':call.get('ok',False)})
 
     def schemas(self):
@@ -121,22 +137,39 @@ class AgentTools:
         return {'provider':'tencent','fetched_at':iso_now(),'rows':[asdict(r) for r in parse_tencent_quotes(text)]}
 
     def get_financials(self, code, as_of):
+        if not re.fullmatch(r'\d{6}',str(code)):raise ValueError('无效股票代码')
         day = as_of.isoformat() if isinstance(as_of,date) else date.fromisoformat(as_of).isoformat()
+        cache=self.settings.runtime/'agents/fundamental/cache'/f'{code}_{day}.json'
+        saved=read_json(cache,{})
+        try:
+            age=(datetime.now(timezone.utc)-datetime.fromisoformat(saved['fetched_at'])).total_seconds()
+            if 0<=age<1800 and saved.get('code')==code and saved.get('as_of')==day and saved.get('status')=='ok':
+                reports=saved.get('reports') or []
+                if reports and all(str(r.get('SECURITY_CODE'))==code and str(r.get('NOTICE_DATE',''))[:10] and str(r['NOTICE_DATE'])[:10]<=day for r in reports):
+                    return {**saved,'cached':True}
+        except (KeyError,ValueError,TypeError):pass
         url='https://datacenter-web.eastmoney.com/api/data/v1/get'
         params={'reportName':'RPT_LICO_FN_CPD','columns':'ALL','pageSize':10,'pageNumber':1,
                 'sortColumns':'REPORTDATE','sortTypes':'-1',
                 'filter':f'(SECURITY_CODE="{code}")(NOTICE_DATE<=\'{day} 23:59:59\')'}
-        payload=self.http().get_json(url,params)
+        from .financial_transport import fetch_financial_json,FinancialUnavailable
+        try:payload,attempts=fetch_financial_json(lambda:self.http().get_json(url,params),url,params)
+        except FinancialUnavailable as exc:
+            atomic_write_json(self.settings.runtime/'agents/fundamental/errors'/f'{code}_{day}_{uuid.uuid4().hex[:8]}.json',
+                              {'code':code,'as_of':day,'source':url,'at':iso_now(),'category':exc.category,'attempts':exc.attempts})
+            raise
         stamp=iso_now()
         path=self.settings.runtime/'agents/fundamental/raw'/f'{code}_{day}_{uuid.uuid4().hex[:8]}.json'
-        atomic_write_json(path,{'source':url,'params':params,'fetched_at':stamp,'payload':payload})
+        atomic_write_json(path,{'source':url,'params':params,'fetched_at':stamp,'payload':payload,'attempts':attempts})
         if not payload.get('success'):
             raise ValueError('财务接口未返回成功结果')
         rows=(payload.get('result') or {}).get('data') or []
         # Independently enforce time/code bounds, even if the provider ignores filters.
         rows=[r for r in rows if str(r.get('SECURITY_CODE'))==code and str(r.get('NOTICE_DATE',''))[:10] and str(r['NOTICE_DATE'])[:10]<=day]
-        return {'status':'ok' if rows else 'no_disclosed_data','code':code,'as_of':day,'source':url,'fetched_at':stamp,'raw_path':str(path),
+        result={'status':'ok' if rows else 'no_disclosed_data','code':code,'as_of':day,'source':url,'fetched_at':stamp,'raw_path':str(path),'cached':False,'attempts':attempts,
                 'reports':[{k:r.get(k) for k in ('SECURITY_CODE','SECURITY_NAME_ABBR','REPORTDATE','NOTICE_DATE','EITIME','BASIC_EPS','WEIGHTAVG_ROE','TOTAL_OPERATE_INCOME','PARENT_NETPROFIT','SJLTZ','YSTZ')} for r in rows]}
+        if rows:atomic_write_json(cache,result)
+        return result
 
     def search_research(self, query, code, as_of, limit=3):
         return self.research.search(query,code,as_of,limit)

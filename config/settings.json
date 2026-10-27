@@ -99,12 +99,28 @@
     "embedding_key_env": "ASTOCK_EMBEDDING_API_KEY",
     "timeout_seconds": 5
   },
+  "shadow": {
+    "enabled": true
+  },
+  "intraday": {
+    "enabled": true
+  },
+  "harness": {
+    "max_daily_pipeline_attempts": 3,
+    "recovery": {
+      "max_run_recoveries": 6,
+      "retry_http_statuses": [408, 429, 500, 502, 503, 504]
+    }
+  },
+  "security": {
+    "allowed_hosts": ["fd6eadf6.natappfree.cc "]
+  },
   "llm": {
     "enabled": false,
     "base_url": "https://api.openai.com/v1",
-    "model": "gpt-4o-mini",
-    "api_key_env": "ASTOCK_LLM_API_KEY",
+    "model": "gpt-5.6-luna",
+    "api_key_env": "API_KEY",
     "timeout_seconds": 30,
-    "max_tokens": 700
+    "max_tokens": 2400
   }
 }

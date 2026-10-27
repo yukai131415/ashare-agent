@@ -42,12 +42,13 @@ class WorkflowTests(unittest.TestCase):
         return AgentResult(name,True,iso_now(),iso_now(),records=2)
 
     def invoke_live(self,workflow):
-        with patch('a_stock_agents.workflow.datetime') as clock,patch('a_stock_agents.agents.recommendation.datetime') as rec_clock,patch('a_stock_agents.agents.analysis.iso_now',return_value=NOW.isoformat()):
+        self.run_sequence=getattr(self,'run_sequence',0)+1
+        with patch('a_stock_agents.workflow.datetime') as clock,patch('a_stock_agents.agents.recommendation.datetime') as rec_clock,patch('a_stock_agents.agents.analysis.iso_now',return_value=NOW.isoformat()),patch('a_stock_agents.agents.recommendation.iso_now',return_value=NOW.isoformat()):
             clock.now.return_value=NOW
             rec_clock.now.return_value=NOW
             rec_clock.fromisoformat.side_effect=datetime.fromisoformat
             rec_clock.strptime.side_effect=datetime.strptime
-            return workflow.invoke('test_live',as_of=NOW.isoformat())
+            return workflow.invoke('test_live_'+str(self.run_sequence),as_of=NOW.isoformat())
 
     def test_actual_graph_publishes_original_engine_pick_and_preserves_daily_lock(self):
         report,_=self.invoke_live(AgentWorkflow(self.settings,self.runner))
@@ -68,6 +69,19 @@ class WorkflowTests(unittest.TestCase):
         self.assertFalse(report['ok'])
         self.assertEqual(report['roles']['decision']['status'],'skipped')
         self.assertIsNone(report['recommendation'])
+
+    def test_harness_resume_reuses_verified_replay_without_running_workers(self):
+        original,_=AgentWorkflow(self.settings).invoke('resume_replay',replay_rows=ROWS,as_of=NOW.isoformat())
+        runner=Mock(side_effect=AssertionError('completed steps must not rerun'))
+        restored,_=AgentWorkflow(self.settings,runner).invoke('resume_replay',resume=True)
+        self.assertTrue(restored['ok']);runner.assert_not_called()
+        self.assertEqual(restored['recommendation'],original['recommendation'])
+
+    def test_harness_resume_rejects_changed_business_config(self):
+        AgentWorkflow(self.settings).invoke('resume_changed',replay_rows=ROWS,as_of=NOW.isoformat())
+        self.settings.values['workflow']['financials_enabled']=True
+        with self.assertRaisesRegex(ValueError,'配置已变化'):
+            AgentWorkflow(self.settings).invoke('resume_changed',resume=True)
 
     def test_supervisor_runs_graph_and_keeps_legacy_health_contract(self):
         supervisor=Supervisor(self.settings)

@@ -1,0 +1,81 @@
+{
+  "verified_at": "2026-10-24T17:08:36+08:00",
+  "protocol": "MCP stdio",
+  "source_commit": "58f488772eefc6ac2192182fa67517d90922469e",
+  "discovery": {
+    "ok": true,
+    "tools": [
+      "stock_fund_flow",
+      "stock_lhb_ggtj_sina",
+      "stock_sector_fund_flow_rank",
+      "stock_zt_pool"
+    ],
+    "total_tools": 47
+  },
+  "queries": [
+    {
+      "status": "ok",
+      "tool": "stock_fund_flow",
+      "message": null,
+      "returned_rows": 10,
+      "data_dates": [
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23"
+      ],
+      "fetched_at": "2026-10-24T17:09:28+08:00",
+      "metadata": [
+        "000530 资金流向",
+        "数据来源: efinance",
+        "近期资金流向"
+      ],
+      "kind": "funds"
+    },
+    {
+      "status": "ok",
+      "tool": "stock_zt_pool",
+      "message": null,
+      "returned_rows": 82,
+      "data_dates": [],
+      "fetched_at": "2026-10-24T17:09:51+08:00",
+      "metadata": [
+        "涨停股池",
+        "数据来源: akshare",
+        "共82只股票"
+      ],
+      "kind": "limitpool"
+    },
+    {
+      "status": "ok",
+      "tool": "stock_lhb_ggtj_sina",
+      "message": null,
+      "returned_rows": 98,
+      "data_dates": [
+        "2026-10-23"
+      ],
+      "fetched_at": "2026-10-24T17:10:22+08:00",
+      "metadata": [
+        "龙虎榜统计",
+        "数据来源: efinance"
+      ],
+      "kind": "billboard"
+    },
+    {
+      "status": "unavailable",
+      "tool": "stock_sector_fund_flow_rank",
+      "message": "外部MCP连接超时或数据接口不可用，请稍后重试。",
+      "returned_rows": null,
+      "data_dates": null,
+      "fetched_at": "2026-10-24T17:11:19+08:00",
+      "metadata": null,
+      "kind": "sectorfunds"
+    }
+  ]
+}

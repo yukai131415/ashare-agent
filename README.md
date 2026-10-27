@@ -1,5 +1,11 @@
 # A 股多 Agent 智能分析系统
 
+## Harness 运行底座
+
+当前采用计划工具驱动的分层 Harness：`harness/planning` 定义步骤与验收，`runtime` 执行和复用检查点，`gateway` 校验工具与归档调用，`policy` 控制恢复，`control` 协调主模型，`adapters` 适配模型协议，`evaluation` 离线核对轨迹。现有正式选股规则和业务数据库不变。
+
+查看执行步骤：`.venv/Scripts/python.exe -m a_stock_agents.cli plan formal`（也支持 `shadow`、`intraday`）。管理员“主Agent”弹框可查看实际计划和任务。完整架构、恢复入口、配置与清理记录见 [Harness说明](docs/harness.md)。
+
 项目使用 **LangGraph StateGraph** 编排数据获取、基本面分析、技术面分析、风控审查、决策汇总五个独立角色。每个角色有独立职责、结构化输入输出、工具权限和运行记录；总控保留重试与故障诊断。行情/财务通过带参数校验的 Function Calling 工具访问，同一套工具通过 MCP stdio 对外提供；研报检索接入 Milvus。
 
 预测继续使用现有 `1.2-capped-valuation-no-news` 多因子模型。财务、研报和可选大模型只提供解释。相同行情、模型状态、配置及当日锁定记录下，推荐结果与升级前一致。
@@ -146,6 +152,10 @@ runtime/
 
 ## MCP 与 Function Calling
 
+多Agent影子选股实验已独立接入：正式推荐完成后异步研究候选，四角色可原生调用受限工具、复核并独立选股或弃选，不替换正式推荐。管理员可在“影子实验”菜单开关/启动，所有登录用户可查看实验；事后补跑不计前瞻收益。见 [运行边界、预算和验证](docs/shadow-agents.md)。
+
+新增外部 **Stock Data MCP 客户端**：所有已登录租户与角色均可访问“个股资金、涨停强势、龙虎榜、板块资金”四个菜单。按需查询、10条分页，保留来源、数据日期与查询时间；不改变推荐模型。安装与限制见 [外部 MCP 接入说明](docs/stock-data-mcp.md)。
+
 ```powershell
 # stdio 服务只能由 MCP 客户端启动，不是 HTTP 网页。
 python -m a_stock_agents mcp
@@ -219,6 +229,18 @@ python -m unittest discover -s tests -p "test_*.py" -v
 ![LangGraph 五角色协作记录](docs/screenshots/agent-workflow.jpg)
 
 实现参考：[LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api)、[MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)、[Milvus Lite 官方文档](https://github.com/milvus-io/milvus-lite)、[Milvus 官方独立部署脚本](https://github.com/milvus-io/milvus/blob/v2.6.11/scripts/standalone_embed.sh)。
+
+## 菜单式投研工作台
+
+看板新增“监控总览、候选排行、策略表现、板块热点、每日简报、历史回测”六个切换菜单，保留深色动态风格、红盈绿亏和原推荐公式。新增内容包括样本池情绪、因子贡献、候选搜索排序、独立收盘价研究与沪深300对照、行业热力图及有来源的历史研究简报。数据缺口直接展示，不用旧行情或推算结果冒充真实数据。
+
+计算口径、数据来源与更新方式见 [投研工作台说明](docs/research-workspace.md)。收盘价研究与原最高涨幅减一点的回测分开显示，不代表真实成交收益。
+
+![菜单式投研工作台](docs/screenshots/workspace-overview.png)
+
+## 多租户与三级权限
+
+首次访问页面需在本机设置管理员账号和密码。支持管理员、经理、普通用户：管理员管理所有租户和账号，经理仅创建本租户普通账号，普通用户仅可访问监控总览与每日简报。模型连接按租户隔离；新增管理员专属 Token 统计菜单，按租户、用户、日期展示服务商实际返回的发送/响应用量和分页明细。详见 [登录与多租户说明](docs/multi-tenancy.md)。
 
 ## 配置
 

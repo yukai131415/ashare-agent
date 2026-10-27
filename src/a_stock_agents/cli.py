@@ -32,6 +32,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--config", help="自定义配置 JSON，会覆盖默认配置")
     commands = parser.add_subparsers(dest="command")
     commands.add_parser("run", help="运行完整流水线")
+    plan=commands.add_parser('plan',help='查看 Harness 计划工具的步骤与验收条件')
+    plan.add_argument('task_type',choices=['formal','shadow','intraday'],nargs='?',default='formal')
+    resume=commands.add_parser('resume',help='从检查点恢复当日正式任务；发布结果待确认时停止')
+    resume.add_argument('run_id')
+    audit=commands.add_parser('audit',help='离线验收 Harness 运行轨迹，不调用模型')
+    audit.add_argument('run_id')
     agent = commands.add_parser("agent", help="单独运行一个子 Agent")
     agent.add_argument("name", choices=["market", "news", "analysis", "backtest", "recommendation"])
     commands.add_parser("status", help="查看总控最近健康状态")
@@ -67,9 +73,22 @@ def main(argv: list[str] | None = None) -> int:
         argv = ["web"]
     args = build_parser().parse_args(argv)
     settings = load_settings(args.config)
+    if args.command=='audit':
+        from a_stock_agents.harness.evaluation import audit_run
+        result=audit_run(settings,args.run_id);_print(result);return 0 if result['structural_checks_passed'] else 1
+    if args.command=='plan':
+        from a_stock_agents.harness.planning.tool import execution_plan_tool
+        _print(execution_plan_tool.invoke({'task_type':args.task_type}));return 0
+    if args.command=='resume':
+        from a_stock_agents.workflow import AgentWorkflow
+        supervisor=Supervisor(settings);supervisor.master.run_id=args.run_id
+        report,_=AgentWorkflow(settings,supervisor.run_agent).invoke(args.run_id,resume=True)
+        supervisor.master.finish(report['ok'])
+        _print(report);return 0 if report['ok'] else 1
     if args.command == 'mcp':
         from a_stock_agents.mcp_server import create_server
-        create_server(settings).run(transport='stdio')
+        from a_stock_agents.console_log import console_output
+        with console_output(sys.stderr):create_server(settings).run(transport='stdio')
         return 0
     if args.command in ('graph','replay'):
         from a_stock_agents.workflow import AgentWorkflow
@@ -147,13 +166,9 @@ def main(argv: list[str] | None = None) -> int:
             if not is_trading_weekday():
                 print("周末休市，启动时不抓取当天行情，不生成当天推荐")
             elif recommendation_window_open(settings):
-                report = supervisor.run_pipeline()
-                rec = report.get("agents", {}).get("recommendation", {})
-                print(
-                    "启动前数据刷新完成："
-                    f"{'成功' if report.get('ok') else '失败'}，"
-                    f"推荐记录 {rec.get('records', 0)} 条"
-                )
+                from a_stock_agents.web import PipelineScheduler
+                completed = PipelineScheduler(settings).run_once('startup')
+                print('启动任务检查完成：' + ('已生成推荐' if completed else '已有结果、等待重试或其他进程正在执行'))
             else:
                 print(f"尚未到 {schedule['daily_run_time']}，启动时不抓取当天数据，不生成当天推荐")
         serve(settings, args.host, args.port)

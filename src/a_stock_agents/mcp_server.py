@@ -12,6 +12,11 @@ def create_server(settings=None):
     server=FastMCP('a-stock-research')
 
     @server.tool()
+    async def get_execution_plan(task_type:str='formal')->dict:
+        """只读查看 formal/shadow/intraday 计划的执行步骤、依赖和验收条件；不启动任务。"""
+        return await asyncio.to_thread(tools.call,'get_execution_plan',{'task_type':task_type})
+
+    @server.tool()
     async def get_quotes(codes:list[str])->dict:
         """查询腾讯实时行情（最多50只）。"""
         return await asyncio.to_thread(tools.call,'get_quotes',{'codes':codes})
@@ -38,7 +43,9 @@ def create_server(settings=None):
 
 
 def main():
-    create_server().run(transport='stdio')
+    import sys
+    from .console_log import console_output
+    with console_output(sys.stderr):create_server().run(transport='stdio')
 
 
 if __name__=='__main__':

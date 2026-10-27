@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import os
+import time
+import uuid
 import subprocess
 import urllib.error
 import urllib.parse
@@ -12,6 +14,7 @@ from typing import Any
 
 from .config import Settings
 from .storage import atomic_write_json, read_json
+from .console_log import console_event, log_scope
 
 
 OPENAI_API_BASE_URL = "https://api.openai.com/v1"
@@ -68,7 +71,15 @@ def llm_config(settings: Settings) -> dict[str, Any]:
 
 def public_config(settings: Settings) -> dict[str, Any]:
     config = llm_config(settings)
+    profiles = read_json(settings.runtime / 'state/llm_profiles.json', {})
+    from hashlib import sha256
+    active_id = sha256((str(config.get('base_url'))+'\n'+str(config.get('model'))).encode()).hexdigest()[:20]
+    available = dict(profiles) if isinstance(profiles, dict) else {}
+    available.setdefault(active_id, config)
     return {
+        "active_profile_id": active_id,
+        "profiles": [{"id": key, "model": str(value.get('model','')), "base_url": str(value.get('base_url','')),
+            "api_key_configured": bool(value.get('api_key'))} for key,value in available.items() if isinstance(value,dict)],
         "enabled": bool(config.get("enabled")),
         "base_url": str(config.get("base_url", "")),
         "model": str(config.get("model", "")),
@@ -82,6 +93,27 @@ def public_config(settings: Settings) -> dict[str, Any]:
 
 def save_config(settings: Settings, values: dict[str, Any]) -> dict[str, Any]:
     current = llm_config(settings)
+    from hashlib import sha256
+    profile_path=settings.runtime/'state/llm_profiles.json'
+    profiles=read_json(profile_path,{})
+    if not isinstance(profiles,dict):
+        profiles={}
+    profile_id=lambda item:sha256((str(item.get('base_url'))+'\n'+str(item.get('model'))).encode()).hexdigest()[:20]
+    profiles[profile_id(current)]=dict(current)
+    if values.get('select_profile_id'):
+        chosen=profiles.get(str(values['select_profile_id']))
+        if not isinstance(chosen,dict):
+            raise ValueError('所选模型不存在，请刷新模型列表。')
+        # Only switch connection details; global enable switches retain their state.
+        current.update({key:chosen.get(key,'') for key in ('base_url','model','api_key','api_key_env','proxy_url')})
+        values={}
+    elif values.get('add_profile'):
+        if not str(values.get('base_url','')).strip() or not str(values.get('model','')).strip():
+            raise ValueError('添加模型时必须填写接口地址和模型名称。')
+        # A new provider must never inherit another provider's saved secret.
+        current['api_key']=''
+        current['api_key_env']=''
+        current['proxy_url']=''
     for key in ("enabled", "base_url", "model", "proxy_url", "agent_explanations_enabled"):
         if key in values:
             current[key] = values[key]
@@ -93,6 +125,8 @@ def save_config(settings: Settings, values: dict[str, Any]) -> dict[str, Any]:
     current["proxy_url"] = str(current.get("proxy_url", "")).strip()
     current["enabled"] = bool(current.get("enabled"))
     current['agent_explanations_enabled']=bool(current.get('agent_explanations_enabled'))
+    profiles[profile_id(current)]=dict(current)
+    atomic_write_json(profile_path,profiles)
     atomic_write_json(
         settings.runtime / "state" / "llm_config.json",
         {key: current[key] for key in ("enabled", "base_url", "model", "api_key", "api_key_env", "proxy_url", "agent_explanations_enabled")},
@@ -109,13 +143,26 @@ def answer_question(
     local_answer: str,
 ) -> tuple[str, str, str]:
     config = llm_config(settings)
+    from .token_usage import usage_call, finish_usage
+    request_id=uuid.uuid4().hex
+    with usage_call(request_id,config.get('model','')), log_scope(request_id=request_id, component='llm', secrets=(str(config.get('api_key') or ''),)):
+        started = time.monotonic()
+        try:
+            result=_answer_question(settings, question, context, local_answer, config)
+            finish_usage(result[1])
+            return result
+        finally:
+            console_event('llm_call_finished', duration_ms=round((time.monotonic()-started)*1000, 1))
+
+
+def _answer_question(settings, question, context, local_answer, config):
     if not config.get("enabled") or not config.get("api_key"):
         _log_event(settings, "answer_local", {"reason": "disabled_or_missing_key", **_safe_config_summary(config)})
         return local_answer, "local", "规则解释"
     base_url = str(config.get("base_url", "")).rstrip("/")
     prompt = (
-        "你是 A 股多 Agent 投研解释助手。只根据提供的系统快照回答，不要编造新闻、价格或财务事实，对每天抓取的数据进行详细分析后进行推荐。"
-        "回答使用简洁中文，明确区分事实、模型推断和不确定性。\n\n"
+        "你是 A 股多 Agent 投研解释助手。只解释提供的已保存推荐和系统快照，不得重新选股或改变模型排序，不要编造新闻、价格或财务事实。"
+        "回答使用简洁中文，先给完整结论，再列依据和风险，尽量控制在900个中文字以内；明确区分事实、模型推断和不确定性。\n\n"
         f"系统快照：\n{context}\n\n用户问题：{question}"
     )
     try:
@@ -240,6 +287,11 @@ def _build_request(base_url: str, prompt: str, config: dict[str, Any]) -> tuple[
             {"role": "user", "content": prompt},
         ],
     }
+    # Interactive explanations do not need a long hidden thinking phase. Qwen's
+    # non-streaming thinking can otherwise exhaust the request's read timeout.
+    hostname=urllib.parse.urlsplit(base_url).hostname or ''
+    if model.lower().startswith('qwen3') and hostname.endswith('.aliyuncs.com'):
+        payload['enable_thinking']=bool(config.get('enable_thinking',False))
     return endpoint, json.dumps(payload, ensure_ascii=False).encode("utf-8"), "openai_compatible"
 
 
@@ -252,6 +304,16 @@ def _is_openai_official(base_url: str) -> bool:
 
 
 def _extract_answer(response_data: dict[str, Any], provider: str) -> str:
+    answer=_extract_answer_text(response_data,provider)
+    choices=(response_data.get('output') or {}).get('choices',[]) if provider=='dashscope_native' else response_data.get('choices',[])
+    reason=choices[0].get('finish_reason') if choices else None
+    incomplete=response_data.get('incomplete_details') or {}
+    if reason in ('length','max_tokens') or response_data.get('status')=='incomplete' or incomplete.get('reason')=='max_output_tokens':
+        answer+='\n\n> ⚠ 回答达到模型输出上限，以上内容尚未完整生成。请缩小问题范围后重新提问；这不是页面隐藏了正文。'
+    return answer
+
+
+def _extract_answer_text(response_data: dict[str, Any], provider: str) -> str:
     if provider == "dashscope_native":
         content = response_data["output"]["choices"][0]["message"]["content"]
         if isinstance(content, list):
@@ -269,11 +331,15 @@ def _extract_answer(response_data: dict[str, Any], provider: str) -> str:
         if not answer:
             raise ValueError("OpenAI 响应中没有可显示的文本。")
         return answer
-    return str(response_data["choices"][0]["message"]["content"])
+    content=response_data["choices"][0]["message"].get("content")
+    if isinstance(content,list):content='\n'.join(str(item.get('text','')) for item in content if isinstance(item,dict))
+    if not isinstance(content,str) or not content.strip():raise ValueError('模型未返回可显示文本，可能只有思考内容或输出额度不足。')
+    return content.strip()
 
 
 def _urllib_completion(endpoint: str, payload: bytes, config: dict[str, Any], provider: str) -> str:
-    print(f"[llm] urllib request provider={provider} endpoint={endpoint}")
+    started = time.monotonic()
+    console_event('llm_request', transport='urllib', provider=provider, endpoint=endpoint, request=json.loads(payload))
     request = urllib.request.Request(
         endpoint,
         data=payload,
@@ -287,21 +353,26 @@ def _urllib_completion(endpoint: str, payload: bytes, config: dict[str, Any], pr
     proxy_url = str(config.get("proxy_url", "")).strip()
     opener = urllib.request.build_opener(
         urllib.request.ProxyHandler({"http": proxy_url, "https": proxy_url})
-    ) if proxy_url else urllib.request.build_opener()
+    ) if proxy_url else urllib.request.build_opener(urllib.request.ProxyHandler({}))
     try:
         with opener.open(request, timeout=float(config.get("timeout_seconds", 30))) as response:
             response_data = json.loads(response.read().decode("utf-8"))
+            from .token_usage import report_usage
+            report_usage(response_data,provider,'urllib')
     except urllib.error.HTTPError as exc:
         try:
             body = exc.read().decode("utf-8", errors="replace")
         except OSError:
             body = ""
-        raise LLMHTTPError(_describe_http_error(exc.code, body)) from exc
-    print(f"[llm] urllib response provider={provider} ok")
+        raise LLMHTTPError(_describe_http_error(exc.code, body,config.get('base_url',''))) from exc
+    console_event('llm_response', transport='urllib', provider=provider,
+                  duration_ms=round((time.monotonic()-started)*1000, 1),
+                  response=response_data, usage=response_data.get('usage'))
     return _extract_answer(response_data, provider)
 
 
 def _curl_completion(endpoint: str, payload: bytes, config: dict[str, Any], provider: str) -> str:
+    started = time.monotonic()
     proxy_url = str(config.get("proxy_url", "")).strip()
     timeout = str(int(float(config.get("timeout_seconds", 30))))
     config_path = ""
@@ -332,13 +403,18 @@ def _curl_completion(endpoint: str, payload: bytes, config: dict[str, Any], prov
         ]
         if proxy_url:
             command[1:1] = ["--proxy", proxy_url]
-        print(f"[llm] curl request provider={provider} endpoint={endpoint} proxy={'yes' if proxy_url else 'no'}")
+        console_event('llm_request', transport='curl', provider=provider, endpoint=endpoint,
+                      proxy_configured=bool(proxy_url), request=json.loads(payload))
         completed = subprocess.run(command, capture_output=True, text=True, timeout=float(timeout) + 5)
         if completed.returncode != 0:
             detail = (completed.stderr or completed.stdout or "").strip()
             raise OSError(detail or f"curl 退出码 {completed.returncode}")
         response_data = json.loads(completed.stdout)
-        print(f"[llm] curl response provider={provider} ok")
+        from .token_usage import report_usage
+        report_usage(response_data,provider,'curl')
+        console_event('llm_response', transport='curl', provider=provider,
+                      duration_ms=round((time.monotonic()-started)*1000, 1),
+                      response=response_data, usage=response_data.get('usage'))
         return _extract_answer(response_data, provider)
     finally:
         for path in (config_path, payload_path):
@@ -376,7 +452,7 @@ def _provider_hint(base_url: str) -> str:
     return "openai_compatible"
 
 
-def _describe_http_error(status: int, body: str) -> str:
+def _describe_http_error(status: int, body: str, base_url: str = '') -> str:
     detail = ""
     try:
         payload = json.loads(body)
@@ -388,8 +464,10 @@ def _describe_http_error(status: int, body: str) -> str:
                 detail = str(error).strip()
     except json.JSONDecodeError:
         detail = ""
+    host=(urllib.parse.urlsplit(base_url).hostname or '').lower()
+    provider='阿里云百炼/千问' if host.endswith('.aliyuncs.com') else 'OpenAI' if host=='api.openai.com' else '当前模型服务商'
     hints = {
-        401: "API Key 无效或已失效，请在 OpenAI API 控制台重新创建密钥。",
+        401: f"API Key 无效或已失效，请检查{provider}对应的密钥和接口地址。",
         403: "当前 API Key、项目或地区无权访问该接口。",
         404: "接口地址或模型名称不存在。",
         429: "请求额度、余额或速率限制已达到上限。",
@@ -399,8 +477,7 @@ def _describe_http_error(status: int, body: str) -> str:
 
 
 def _log_event(settings: Settings, event: str, details: dict[str, Any]) -> None:
-    entry = {"at": datetime.now().astimezone().isoformat(), "event": event, **details}
-    print(f"[llm] {event}: " + json.dumps(details, ensure_ascii=False))
+    entry = console_event(event, component='llm', **details)
     path = settings.runtime / "agents" / "llm" / "logs" / "events.jsonl"
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as handle:

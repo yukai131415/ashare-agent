@@ -1,0 +1,598 @@
+{
+  "snapshot": "2026-10-25",
+  "scope": "静态代码结构，不是实时运行状态",
+  "nodes": [
+    {
+      "id": "system",
+      "label": "A股多 Agent 系统 · Harness 架构",
+      "kind": "system"
+    },
+    {
+      "id": "entry",
+      "label": "入口层",
+      "kind": "layer",
+      "change": "保留"
+    },
+    {
+      "id": "web",
+      "label": "Web 看板与租户入口",
+      "kind": "component",
+      "source": "src/a_stock_agents/web.py"
+    },
+    {
+      "id": "cli",
+      "label": "CLI：plan / audit / resume",
+      "kind": "component",
+      "source": "src/a_stock_agents/cli.py"
+    },
+    {
+      "id": "scheduler",
+      "label": "定时调度与每日尝试上限",
+      "kind": "component",
+      "source": "src/a_stock_agents/scheduler.py"
+    },
+    {
+      "id": "mcp",
+      "label": "MCP 服务：5 个工具",
+      "kind": "component",
+      "source": "src/a_stock_agents/mcp_server.py"
+    },
+    {
+      "id": "application",
+      "label": "应用编排层",
+      "kind": "layer",
+      "change": "接入 Harness"
+    },
+    {
+      "id": "formal",
+      "label": "正式选股：Supervisor / Workflow",
+      "kind": "component",
+      "source": "src/a_stock_agents/supervisor.py; workflow.py"
+    },
+    {
+      "id": "shadow",
+      "label": "影子研究：独立模型结论",
+      "kind": "component",
+      "source": "src/a_stock_agents/shadow.py"
+    },
+    {
+      "id": "intraday",
+      "label": "当日分析：时段唯一记录",
+      "kind": "component",
+      "source": "src/a_stock_agents/intraday.py"
+    },
+    {
+      "id": "master",
+      "label": "主 Agent：受限分发与恢复",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/control/master.py"
+    },
+    {
+      "id": "planning",
+      "label": "可信计划层",
+      "kind": "layer",
+      "change": "新增"
+    },
+    {
+      "id": "plan",
+      "label": "get_execution_plan 只读工具",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/planning/tool.py"
+    },
+    {
+      "id": "steps",
+      "label": "正式 / 影子 / 盘中三类计划",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/planning/tool.py"
+    },
+    {
+      "id": "contract",
+      "label": "依赖、工具白名单、验收、副作用",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/planning/tool.py"
+    },
+    {
+      "id": "version",
+      "label": "版本化模板；不由模型任意改写",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/planning/tool.py"
+    },
+    {
+      "id": "execution",
+      "label": "执行与边界层",
+      "kind": "layer",
+      "change": "新增 / 统一"
+    },
+    {
+      "id": "runtime",
+      "label": "WorkflowHarness 阶段执行器",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/runtime.py"
+    },
+    {
+      "id": "gateway",
+      "label": "工具与模型调用网关",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/gateway.py"
+    },
+    {
+      "id": "context",
+      "label": "上下文指纹与大小检查",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/context.py"
+    },
+    {
+      "id": "locks",
+      "label": "单机跨进程互斥锁",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/locking.py"
+    },
+    {
+      "id": "recovery",
+      "label": "状态与恢复层",
+      "kind": "layer",
+      "change": "新增 / 加强"
+    },
+    {
+      "id": "ledger",
+      "label": "SQLite 运行账本 runs.db",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/persistence.py"
+    },
+    {
+      "id": "checkpoint",
+      "label": "检查点：同输入成功阶段复用",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/runtime.py"
+    },
+    {
+      "id": "policy",
+      "label": "错误分类、白名单、累计预算",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/policy.py"
+    },
+    {
+      "id": "unknown",
+      "label": "发布或模型结果不明 → 待核对",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/runtime.py; harness/gateway.py"
+    },
+    {
+      "id": "business",
+      "label": "业务与模型层",
+      "kind": "layer",
+      "change": "保留 / 迁移"
+    },
+    {
+      "id": "workers",
+      "label": "行情 / 新闻 / 分析 / 回测 / 推荐",
+      "kind": "component",
+      "source": "src/a_stock_agents/agents/"
+    },
+    {
+      "id": "rules",
+      "label": "原评分、准入与证据校验",
+      "kind": "component",
+      "source": "src/a_stock_agents/selection.py; models.py"
+    },
+    {
+      "id": "adapter",
+      "label": "千问等服务商协议适配",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/adapters/llm.py"
+    },
+    {
+      "id": "data",
+      "label": "行情 / 财务 / Milvus / 外部 MCP",
+      "kind": "component",
+      "source": "src/a_stock_agents/financial_transport.py; research.py; external_stock_mcp.py"
+    },
+    {
+      "id": "observability",
+      "label": "审计与安全层",
+      "kind": "layer",
+      "change": "新增 / 保留"
+    },
+    {
+      "id": "audit",
+      "label": "轨迹一致性验收，不调用模型",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/evaluation.py"
+    },
+    {
+      "id": "monitor",
+      "label": "管理员弹框：计划与最近任务",
+      "kind": "component",
+      "source": "src/a_stock_agents/static/agent-control.js"
+    },
+    {
+      "id": "usage",
+      "label": "调用回执与真实 usage 留存",
+      "kind": "component",
+      "source": "src/a_stock_agents/harness/gateway.py; token_usage.py"
+    },
+    {
+      "id": "security",
+      "label": "租户隔离、鉴权、脱敏与日志",
+      "kind": "component",
+      "source": "src/a_stock_agents/auth.py; privacy.py; console_log.py"
+    }
+  ],
+  "edges": [
+    {
+      "source": "system",
+      "relation": "分层组织",
+      "target": "entry"
+    },
+    {
+      "source": "entry",
+      "relation": "包含",
+      "target": "web"
+    },
+    {
+      "source": "entry",
+      "relation": "包含",
+      "target": "cli"
+    },
+    {
+      "source": "entry",
+      "relation": "包含",
+      "target": "scheduler"
+    },
+    {
+      "source": "entry",
+      "relation": "包含",
+      "target": "mcp"
+    },
+    {
+      "source": "system",
+      "relation": "分层组织",
+      "target": "application"
+    },
+    {
+      "source": "application",
+      "relation": "包含",
+      "target": "formal"
+    },
+    {
+      "source": "application",
+      "relation": "包含",
+      "target": "shadow"
+    },
+    {
+      "source": "application",
+      "relation": "包含",
+      "target": "intraday"
+    },
+    {
+      "source": "application",
+      "relation": "包含",
+      "target": "master"
+    },
+    {
+      "source": "system",
+      "relation": "分层组织",
+      "target": "planning"
+    },
+    {
+      "source": "planning",
+      "relation": "包含",
+      "target": "plan"
+    },
+    {
+      "source": "planning",
+      "relation": "包含",
+      "target": "steps"
+    },
+    {
+      "source": "planning",
+      "relation": "包含",
+      "target": "contract"
+    },
+    {
+      "source": "planning",
+      "relation": "包含",
+      "target": "version"
+    },
+    {
+      "source": "system",
+      "relation": "分层组织",
+      "target": "execution"
+    },
+    {
+      "source": "execution",
+      "relation": "包含",
+      "target": "runtime"
+    },
+    {
+      "source": "execution",
+      "relation": "包含",
+      "target": "gateway"
+    },
+    {
+      "source": "execution",
+      "relation": "包含",
+      "target": "context"
+    },
+    {
+      "source": "execution",
+      "relation": "包含",
+      "target": "locks"
+    },
+    {
+      "source": "system",
+      "relation": "分层组织",
+      "target": "recovery"
+    },
+    {
+      "source": "recovery",
+      "relation": "包含",
+      "target": "ledger"
+    },
+    {
+      "source": "recovery",
+      "relation": "包含",
+      "target": "checkpoint"
+    },
+    {
+      "source": "recovery",
+      "relation": "包含",
+      "target": "policy"
+    },
+    {
+      "source": "recovery",
+      "relation": "包含",
+      "target": "unknown"
+    },
+    {
+      "source": "system",
+      "relation": "分层组织",
+      "target": "business"
+    },
+    {
+      "source": "business",
+      "relation": "包含",
+      "target": "workers"
+    },
+    {
+      "source": "business",
+      "relation": "包含",
+      "target": "rules"
+    },
+    {
+      "source": "business",
+      "relation": "包含",
+      "target": "adapter"
+    },
+    {
+      "source": "business",
+      "relation": "包含",
+      "target": "data"
+    },
+    {
+      "source": "system",
+      "relation": "分层组织",
+      "target": "observability"
+    },
+    {
+      "source": "observability",
+      "relation": "包含",
+      "target": "audit"
+    },
+    {
+      "source": "observability",
+      "relation": "包含",
+      "target": "monitor"
+    },
+    {
+      "source": "observability",
+      "relation": "包含",
+      "target": "usage"
+    },
+    {
+      "source": "observability",
+      "relation": "包含",
+      "target": "security"
+    },
+    {
+      "source": "web",
+      "relation": "发起/查看",
+      "target": "formal"
+    },
+    {
+      "source": "web",
+      "relation": "发起/查看",
+      "target": "shadow"
+    },
+    {
+      "source": "web",
+      "relation": "查看",
+      "target": "intraday"
+    },
+    {
+      "source": "cli",
+      "relation": "读取",
+      "target": "plan"
+    },
+    {
+      "source": "cli",
+      "relation": "审计",
+      "target": "audit"
+    },
+    {
+      "source": "cli",
+      "relation": "仅正式任务恢复",
+      "target": "formal"
+    },
+    {
+      "source": "mcp",
+      "relation": "暴露只读计划工具",
+      "target": "plan"
+    },
+    {
+      "source": "scheduler",
+      "relation": "触发",
+      "target": "formal"
+    },
+    {
+      "source": "scheduler",
+      "relation": "触发",
+      "target": "intraday"
+    },
+    {
+      "source": "formal",
+      "relation": "按计划执行",
+      "target": "runtime"
+    },
+    {
+      "source": "shadow",
+      "relation": "按计划执行",
+      "target": "runtime"
+    },
+    {
+      "source": "intraday",
+      "relation": "按计划执行",
+      "target": "runtime"
+    },
+    {
+      "source": "master",
+      "relation": "受规则约束",
+      "target": "policy"
+    },
+    {
+      "source": "master",
+      "relation": "运行内模型调用经由",
+      "target": "gateway"
+    },
+    {
+      "source": "plan",
+      "relation": "返回",
+      "target": "steps"
+    },
+    {
+      "source": "plan",
+      "relation": "返回",
+      "target": "contract"
+    },
+    {
+      "source": "plan",
+      "relation": "返回",
+      "target": "version"
+    },
+    {
+      "source": "runtime",
+      "relation": "读取步骤依赖",
+      "target": "plan"
+    },
+    {
+      "source": "runtime",
+      "relation": "执行",
+      "target": "workers"
+    },
+    {
+      "source": "runtime",
+      "relation": "使用",
+      "target": "locks"
+    },
+    {
+      "source": "runtime",
+      "relation": "写入",
+      "target": "ledger"
+    },
+    {
+      "source": "runtime",
+      "relation": "恢复时核对",
+      "target": "checkpoint"
+    },
+    {
+      "source": "runtime",
+      "relation": "不确定副作用暂停",
+      "target": "unknown"
+    },
+    {
+      "source": "gateway",
+      "relation": "执行工具白名单",
+      "target": "contract"
+    },
+    {
+      "source": "gateway",
+      "relation": "检查资料截止时间",
+      "target": "context"
+    },
+    {
+      "source": "gateway",
+      "relation": "存储调用档案",
+      "target": "ledger"
+    },
+    {
+      "source": "gateway",
+      "relation": "模型发送前登记",
+      "target": "usage"
+    },
+    {
+      "source": "adapter",
+      "relation": "经过模型边界",
+      "target": "gateway"
+    },
+    {
+      "source": "gateway",
+      "relation": "调用工具获取",
+      "target": "data"
+    },
+    {
+      "source": "workers",
+      "relation": "遵循",
+      "target": "rules"
+    },
+    {
+      "source": "shadow",
+      "relation": "调用",
+      "target": "adapter"
+    },
+    {
+      "source": "intraday",
+      "relation": "调用",
+      "target": "adapter"
+    },
+    {
+      "source": "checkpoint",
+      "relation": "持久保存",
+      "target": "ledger"
+    },
+    {
+      "source": "policy",
+      "relation": "持久累计恢复次数",
+      "target": "ledger"
+    },
+    {
+      "source": "unknown",
+      "relation": "阻止盲目重放",
+      "target": "runtime"
+    },
+    {
+      "source": "audit",
+      "relation": "读取执行轨迹",
+      "target": "ledger"
+    },
+    {
+      "source": "monitor",
+      "relation": "展示任务摘要",
+      "target": "ledger"
+    },
+    {
+      "source": "monitor",
+      "relation": "展示三类计划",
+      "target": "plan"
+    },
+    {
+      "source": "security",
+      "relation": "限制访问",
+      "target": "monitor"
+    },
+    {
+      "source": "usage",
+      "relation": "记录实际回执而非字符估算",
+      "target": "ledger"
+    }
+  ]
+}

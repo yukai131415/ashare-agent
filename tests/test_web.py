@@ -18,6 +18,54 @@ from a_stock_agents.web import _local_answer, _seconds_until_next_run, backtest_
 
 
 class DashboardDataTests(unittest.TestCase):
+    def test_scheduler_countdown_uses_server_time_and_header(self):
+        html=page_html(load_settings())
+        self.assertIn('aria-label="推荐任务倒计时"',html)
+        self.assertNotIn('id="countdown-label"',html)
+        self.assertNotIn('id="countdown-next"',html)
+        self.assertIn("actions.append(widget,logout)",html)
+        self.assertIn('欢迎：',html)
+        self.assertIn('performance.now()-received',html)
+        self.assertIn("Date.parse(snapshot.server_now)",html)
+        self.assertIn('awaiting_dispatch',html)
+
+    def test_score_ring_has_confidential_dialog(self):
+        html=page_html(load_settings())
+        self.assertIn("scoreDialog.showModal()",html)
+        self.assertIn('查看评分流程与结果（保密版）',html)
+        self.assertIn('已存前五名位置',html)
+        self.assertIn('不是可复刻的逐项计算明细',html)
+        self.assertIn('score-details-dialog::backdrop',html)
+
+    def test_selected_stock_left_and_mood_right_with_horizontal_bars(self):
+        html=page_html(load_settings())
+        self.assertIn('.workspace-duo.workspace-pick-mood{grid-template-columns:minmax(0,2fr) minmax(0,1fr)',html)
+        self.assertIn("overview.prepend(document.querySelector('.featured-layout>article'))",html)
+        self.assertIn("overview.classList.add('workspace-pick-mood')",html)
+        self.assertIn('class="mood-horizontal"',html)
+        self.assertIn('class="mood-bar-row"',html)
+        self.assertNotIn('row.count/max*60+2',html)
+
+    def test_strategy_sections_hidden_but_market_mood_kept(self):
+        html=page_html(load_settings())
+        self.assertIn("$('metric-model').closest('.metric').hidden=true",html)
+        self.assertIn("$('pick-contributions').closest('article').hidden=true",html)
+        self.assertIn("document.querySelector('.featured-layout>aside').hidden=true",html)
+        self.assertIn('id="pool-mood"',html)
+        self.assertIn('workspace-mood-only',html)
+
+    def test_navigation_is_vertical_sidebar(self):
+        html=page_html(load_settings())
+        self.assertIn("nav.setAttribute('aria-orientation','vertical')",html)
+        self.assertIn("document.body.classList.add('workspace-sidebar')",html)
+        self.assertIn("'ArrowUp','ArrowDown'",html)
+        self.assertIn('.workspace-sidebar .workspace-nav',html)
+
+    def test_question_panel_is_in_monitor_overview(self):
+        html=page_html(load_settings())
+        self.assertIn("move('overview',document.querySelector('.qa-grid'))",html)
+        self.assertNotIn("'.workflow-panel','.qa-grid'])move('brief'",html)
+
     def test_explanation_distinguishes_disabled_news_from_historical_scoring(self):
         rec = {
             "code": "600001", "name": "甲公司", "model": "balanced",
@@ -124,7 +172,10 @@ class DashboardDataTests(unittest.TestCase):
             values = load_settings().values
             values = {**values, "scheduler": {**values.get("scheduler", {}), "dashboard_refresh_seconds": 30}}
             settings = Settings(Path(folder), values)
-            self.assertIn("setInterval(() => load(el('date').value).catch(() => {}), 30000)", page_html(settings))
+            html = page_html(settings)
+            self.assertIn("nextPollAt=Date.now()+30000", html)
+            self.assertIn("Date.now()>=nextPollAt&&!monitorLoading", html)
+            self.assertNotIn("__DASHBOARD_REFRESH_MS__", html)
 
     def test_scheduler_next_run_rolls_to_tomorrow_after_daily_time(self):
         now = datetime(2026, 9, 1, 14, 31, tzinfo=timezone(timedelta(hours=8)))

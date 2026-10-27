@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import json
 import math
+import time
 from concurrent.futures import ThreadPoolExecutor
+from contextvars import copy_context
 from datetime import datetime
 from typing import Any, TypedDict
 from langgraph.graph import StateGraph, START, END
@@ -19,6 +21,7 @@ from .models import get_model
 from .recommendation_store import recommendation_store
 from .selection import rank_candidates
 from .storage import atomic_write_json, read_json
+from .console_log import console_event, log_scope
 
 
 class WorkflowState(TypedDict, total=False):
@@ -65,19 +68,38 @@ class Role:
         return {'text':answer,'source':source,'model':model}
 
     def __call__(self, state):
+        with log_scope(run_id=state['run_id'], agent=self.name, agent_title=self.title):
+            from .harness.runtime import WorkflowHarness
+            if isinstance(getattr(self.workflow,'runtime',None),WorkflowHarness):
+                return self.workflow.runtime.run_step(self.name,state,lambda:self._run_logged(state))
+            return self._run_logged(state)
+
+    def _run_logged(self, state):
+        timer=time.monotonic()
         started=iso_now()
+        console_event('agent_started')
         self.workflow.event({'status':'role_started','role':self.name,'run_id':state['run_id']})
         results,roles=dict(state.get('results',{})),dict(state.get('roles',{}))
         if state.get('blocked'):
+            console_event('agent_skipped', reason=state['blocked'])
+            self.workflow.event({'status':'skipped','role':self.name,'run_id':state['run_id']})
             roles[self.name]={'title':self.title,'status':'skipped','reason':state['blocked'],'started_at':started,'finished_at':iso_now()}
             return {'roles':roles}
         try:
             updates, details=self.execute(state)
             results.update(updates.pop('results',{}))
             roles[self.name]={'title':self.title,'status':'success','started_at':started,'finished_at':iso_now(),**details}
-            self.workflow.event({'status':'role_finished','role':self.name,'ok':True,'run_id':state['run_id']})
+            console_event('agent_finished', status=roles[self.name]['status'],
+                          duration_ms=round((time.monotonic()-timer)*1000,1),
+                          summary={**{key:details[key] for key in ('market_rows','candidate_count','model','passed','message','mode') if key in details},
+                                   'evidence_count':len(details.get('evidence',[])),
+                                   'recommendation':{key:details.get('recommendation',{}).get(key) for key in ('code','name','score')}
+                                   if 'recommendation' in details else None},
+                          records={key:value.get('records') for key,value in results.items() if isinstance(value,dict)})
+            self.workflow.event({'status':'role_finished','role':self.name,'ok':roles[self.name]['status']=='success','run_id':state['run_id']})
             return {**updates,'results':results,'roles':roles}
         except Exception as exc:
+            console_event('agent_failed', error_type=type(exc).__name__, message=str(exc), duration_ms=round((time.monotonic()-timer)*1000,1))
             roles[self.name]={'title':self.title,'status':'failed','started_at':started,'finished_at':iso_now(),'error_type':type(exc).__name__,'message':str(exc)}
             self.workflow.event({'status':'role_finished','role':self.name,'ok':False,'error_type':type(exc).__name__,'run_id':state['run_id']})
             return {'roles':roles,'blocked':f'{self.title}失败：{exc}','results':results}
@@ -92,7 +114,9 @@ class DataAcquisitionRole(Role):
             return {'rows':state['replay_rows']},{'mode':'snapshot_replay','market_rows':len(state['replay_rows'])}
         results={}
         with ThreadPoolExecutor(max_workers=2,thread_name_prefix='collector') as pool:
-            futures={name:pool.submit(self.call_tool,'collect_'+name) for name in ('market','news')}
+            # 每个并行任务单独复制上下文，保留 run_id 和 Harness 网关约束；
+            # 同一个 Context 不能被多个线程同时进入。
+            futures={name:pool.submit(copy_context().run,self.call_tool,'collect_'+name) for name in ('market','news')}
             for name,future in futures.items():
                 results[name]=future.result()
         if not all(v['ok'] for v in results.values()):
@@ -191,6 +215,7 @@ class RiskRole(Role):
                 if str(r.get('recommendation_date') or r.get('created_at',''))[:10]==now.date().isoformat()
                 and str(r.get('created_at',''))[11:16]>=cutoff),None)
             if existing:
+                # 当日推荐已锁定时，审查真正对外展示的股票，而不是本轮新排名第一。
                 reviewed_code=existing['code']
                 if not allowed_rows([existing],self.settings):
                     raise DataUnavailableError('今日锁定股票不符合当前准入规则')
@@ -260,20 +285,45 @@ class AgentWorkflow:
         self.tools=AgentTools(settings,runner,self.event)
         graph=StateGraph(WorkflowState)
         previous=START
-        for role_type in ROLE_TYPES:
+        from .harness.planning.tool import get_execution_plan
+        roles_by_name={role.name:role for role in ROLE_TYPES}
+        # 类负责业务实现，可信计划负责顺序；避免另写一套步骤后发生顺序漂移。
+        for specification in get_execution_plan('formal')['steps']:
+            role_type=roles_by_name[specification['id']]
             graph.add_node(role_type.name,role_type(self))
             graph.add_edge(previous,role_type.name)
             previous=role_type.name
         graph.add_edge(previous,END)
         self.graph=graph.compile()
 
-    def invoke(self,run_id,replay_rows=None,model='balanced',as_of=None,persist=True):
+    def invoke(self,run_id,replay_rows=None,model='balanced',as_of=None,persist=True,resume=False,before_run=None):
         self.replay=replay_rows is not None
         initial={'run_id':run_id,'replay':self.replay,'as_of':as_of or iso_now(),'roles':{},'results':{}}
         if self.replay:
             initial.update(replay_rows=replay_rows,replay_model=model)
+        from .harness.runtime import WorkflowHarness
+        from .harness.persistence import fingerprint
+        config_hash=fingerprint({key:self.settings.values.get(key) for key in ('recommendation','market','workflow')})
+        initial['config_hash']=config_hash
+        if resume:
+            # 恢复必须使用原始输入和冻结日期，不能把“今天的新数据”接到昨天的中间结果。
+            # 配置只保存指纹，不将整份配置（可能含密钥）写入运行输入。
+            from .harness.persistence import RunStore
+            saved=RunStore(self.settings).run(run_id)
+            if not saved or saved['kind']!='formal':raise ValueError('找不到可恢复的正式任务')
+            initial=json.loads(saved['input_json']);self.replay=bool(initial.get('replay'))
+            if initial.get('config_hash')!=config_hash:raise ValueError('策略或准入配置已变化，拒绝复用旧任务检查点')
+            from .scheduler import shanghai_now
+            if not self.replay and initial['as_of'][:10]!=shanghai_now().date().isoformat():raise ValueError('不能恢复跨交易日正式任务，请创建新任务')
+        self.runtime=WorkflowHarness(self.settings,run_id,'formal',initial) if persist else None
         try:
-            state=self.graph.invoke(initial)
+            if self.runtime:
+                with self.runtime.scope():
+                    if before_run:before_run()
+                    state=self.graph.invoke(initial)
+            else:
+                if before_run:before_run()
+                state=self.graph.invoke(initial)
             report={'run_id':run_id,'engine':'langgraph','mode':'snapshot_replay' if self.replay else 'live',
                     'ok':not bool(state.get('blocked')),'blocked':state.get('blocked'),
                     'roles':state['roles'],'tool_calls':list(self.tools.calls),
@@ -288,6 +338,10 @@ class AgentWorkflow:
                     if rec.get('recommendation_id'):
                         atomic_write_json(folder/'recommendations'/(rec['recommendation_id']+'.json'),report)
             # Full rankings are available to regression verification, not written to UI/LLM context.
+            if self.runtime:self.runtime.finish(report['ok'])
             return report,state.get('ranked',[])
+        except Exception:
+            if self.runtime:self.runtime.finish(False)
+            raise
         finally:
             self.tools.close()

@@ -86,8 +86,11 @@ def fetch_daily_high(data_dir: Path, code: str, target_date: date):
     start = (target_date - timedelta(days=40)).isoformat()
     url = f"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param={symbol},day,{start},{target_date.isoformat()},60,"
     request = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urlopen(request, timeout=20) as response:
-        payload = json.loads(response.read().decode("utf-8"))
+    from ..console_log import external_operation
+    with external_operation('backtest_daily',endpoint=url,method='GET',code=code,timeout_seconds=20) as logged:
+        with urlopen(request, timeout=20) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+            logged.update(http_status=getattr(response,'status',None),response=payload)
     high, previous_close = parse_daily_high(payload, symbol, target_date)
     source = data_dir.parent / "raw" / "historical_daily" / f"{code}_{target_date}.json"
     atomic_write_json(source, {"url": url, "fetched_at": iso_now(), "adjustment": "none", "payload": payload})

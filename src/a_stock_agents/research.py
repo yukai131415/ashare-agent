@@ -12,6 +12,15 @@ from .http import HttpClient
 
 logger=logging.getLogger(__name__)
 
+# PyMilvus defaults to 10-second idle pings. Milvus/gRPC may reject these with
+# GOAWAY too_many_pings. Short request timeouts remain independent of keepalive.
+MILVUS_GRPC_OPTIONS = {
+    'grpc.keepalive_time_ms': 600_000,
+    'grpc.keepalive_timeout_ms': 20_000,
+    'grpc.keepalive_permit_without_calls': False,
+    'grpc.http2.max_pings_without_data': 2,
+}
+
 
 class ResearchIndex:
     def __init__(self, settings):
@@ -45,8 +54,12 @@ class ResearchIndex:
             request = urllib.request.Request(endpoint+'/embeddings', data=json.dumps({
                 'model': self.config['embedding_model'], 'input': text,
             }).encode(), headers={'Authorization': 'Bearer '+key, 'Content-Type': 'application/json'})
-            with urllib.request.urlopen(request, timeout=20) as response:
-                vector = json.load(response)['data'][0]['embedding']
+            from .console_log import external_operation,log_scope
+            with log_scope(secrets=(key,)),external_operation('research_embedding',endpoint=endpoint+'/embeddings',model=self.config['embedding_model'],input_characters=len(text),timeout_seconds=20) as logged:
+                with urllib.request.urlopen(request, timeout=20) as response:
+                    payload=json.load(response)
+                    vector = payload['data'][0]['embedding']
+                    logged.update(http_status=getattr(response,'status',None),dimension=len(vector),usage=payload.get('usage'))
             if len(vector) != self.dimension or not all(math.isfinite(float(v)) for v in vector):
                 raise ValueError('Embedding dimension/value mismatch')
             return vector
@@ -72,6 +85,7 @@ class ResearchIndex:
             self._client = MilvusClient(
                 uri=os.getenv('ASTOCK_MILVUS_URI') or self.config.get('uri', 'http://127.0.0.1:19530'),
                 token=os.getenv('ASTOCK_MILVUS_TOKEN', ''), timeout=float(self.config.get('timeout_seconds', 5)),
+                grpc_options=dict(MILVUS_GRPC_OPTIONS),
             )
             logger.info('research Milvus client connected')
         return self._client
